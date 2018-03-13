@@ -53,17 +53,14 @@
     <Compile Include="Entities\Categories.cs" />
     <Compile Include="Entities\Base\Entity.cs" />
     <Compile Include="Entities\CoverImage.cs" />
-    <Compile Include="Entities\Interfaces\IEntitiesContext.cs" />
-    <Compile Include="Entities\Interfaces\IEntityBase.cs" />
     <Compile Include="Entities\News.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\Base\EntityRepository.cs" />
-    <Compile Include="Repository\Base\IEntityRepository.cs" />
+    <Compile Include="Repository\Base\EntityBaseRepository.cs" />
+    <Compile Include="Repository\Base\IEntityBaseRepository.cs" />
+    <Compile Include="Repository\Implementation\CoverImagesRepository.cs" />
+    <Compile Include="Repository\Interfaces\IRepositories.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repository\Implementation\" />
-    <Folder Include="Repository\Interface\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

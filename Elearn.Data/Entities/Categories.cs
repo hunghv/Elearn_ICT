@@ -1,6 +1,4 @@
-﻿using System;
-using Elearn.Data.Entities.Base;
-using Elearn.Data.Entities.Interfaces;
+﻿using Elearn.Data.Entities.Base;
 
 namespace Elearn.Data.Entities
 {
