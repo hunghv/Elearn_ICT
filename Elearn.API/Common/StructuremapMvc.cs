@@ -1,9 +1,11 @@
-﻿using System.Web;
+﻿using System.Web.Mvc;
 using Elearn.API.Common;
 using Elearn.API.DependencyResolution;
+using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using StructureMap;
+using WebActivatorEx;
 
-[assembly: PreApplicationStartMethod(typeof(StructuremapMvc), "Start")]
+[assembly: System.Web.PreApplicationStartMethod(typeof(StructuremapMvc), "Start")]
 [assembly: ApplicationShutdownMethod(typeof(StructuremapMvc), "End")]
 namespace Elearn.API.Common
 {
