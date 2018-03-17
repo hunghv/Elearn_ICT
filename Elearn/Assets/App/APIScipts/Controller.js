@@ -1,12 +1,14 @@
-﻿app.controller('APIController', function ($scope, APIService) {
+﻿//var app = angular.module("APIModule", []);;
+app.controller("APIController", function ($scope, apiService) {
     getAll();
 
     function getAll() {
-        var servCall = APIService.getSubs();
+        debugger;
+        var servCall = apiService.getSubs();
         servCall.then(function (d) {
             $scope.subscriber = d.data;
         }, function (error) {
-            window.$log.error('Oops! Something went wrong while fetching the data.');
+            window.$log.error("Oops! Something went wrong while fetching the data." + error);
         });
     }
 })

@@ -1,14 +1,4 @@
 ﻿var app;
 (function () {
-    'use strict';
-
-    app = angular.module('APIModule', [
-        // Angular modules 
-        'ngRoute'
-
-        // Custom modules 
-
-        // 3rd Party Modules
-        
-    ]);
+    app = angular.module("APIModule", []);
 })();

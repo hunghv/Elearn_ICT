@@ -1,4 +1,8 @@
 ﻿using Elearn.Data.Common;
+using Elearn.Data.Repository.Implementation;
+using Elearn.Data.Repository.Interfaces;
+using Service.Services;
+using Service.Services.Interfaces;
 using StructureMap;
 
 namespace Elearn.API.DependencyResolution
@@ -15,7 +19,14 @@ namespace Elearn.API.DependencyResolution
                     scan.WithDefaultConventions();
                 });
             //DataContext
+
             For<ElearnContext>().Use<ElearnContext>();
+
+            //Services
+            For<ICategoriesService>().Use<CategoriesService>();
+
+            //Repository
+            For<ICategoriesRepository>().Use<CategoriesRepository>();
         }
 
        
