@@ -70,6 +70,15 @@
     <Compile Include="Entities\Base\Entity.cs" />
     <Compile Include="Entities\CoverImage.cs" />
     <Compile Include="Entities\News.cs" />
+    <Compile Include="Migrations\201803171444343_InitialCreate.cs" />
+    <Compile Include="Migrations\201803171444343_InitialCreate.Designer.cs">
+      <DependentUpon>201803171444343_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803171543189_InitDatabase.cs" />
+    <Compile Include="Migrations\201803171543189_InitDatabase.Designer.cs">
+      <DependentUpon>201803171543189_InitDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Base\EntityBaseRepository.cs" />
     <Compile Include="Repository\Base\IEntityBaseRepository.cs" />
@@ -77,7 +86,14 @@
     <Compile Include="Repository\Implementation\CoverImagesRepository.cs" />
     <Compile Include="Repository\Interfaces\IRepositories.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201803171444343_InitialCreate.resx">
+      <DependentUpon>201803171444343_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803171543189_InitDatabase.resx">
+      <DependentUpon>201803171543189_InitDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
