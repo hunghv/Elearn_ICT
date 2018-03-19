@@ -1115,14 +1115,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\App\Common\" />
-    <Folder Include="Assets\App\Components\control\" />
-    <Folder Include="Assets\App\Components\forms\" />
-    <Folder Include="Assets\App\Controllers\" />
-    <Folder Include="Assets\App\Services\control\" />
-    <Folder Include="Assets\App\Services\forms\" />
-    <Folder Include="Assets\App\Views\control\" />
-    <Folder Include="Assets\App\Views\forms\" />
+    <Folder Include="Assets\App\core\" />
+    <Folder Include="Assets\App\main\apis\" />
+    <Folder Include="Assets\App\main\apps\" />
+    <Folder Include="Assets\App\main\directives\" />
+    <Folder Include="Assets\App\main\filters\" />
+    <Folder Include="Assets\App\main\pages\" />
+    <Folder Include="Assets\App\main\services\" />
+    <Folder Include="Assets\App\navigation\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\fonts\glyphicons-halflings-regular.woff" />

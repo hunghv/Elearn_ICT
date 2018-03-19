@@ -5,10 +5,10 @@ using Elearn.Data.Repository.Interfaces;
 
 namespace Elearn.Data.Repository.Implementation
 {
-    public class CategoriesRepository:EntityBaseRepository<Categories>, ICategoriesRepository
+    public class AttachmentRepository:EntityBaseRepository<Attachment>,IAttachmentRepository
     {
-        public CategoriesRepository(ElearnContext context) : base(context)
+        public AttachmentRepository(ElearnContext context) : base(context)
         {
         }
     }
-}   
+}

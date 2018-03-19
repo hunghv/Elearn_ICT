@@ -5,10 +5,10 @@ using Elearn.Data.Repository.Interfaces;
 
 namespace Elearn.Data.Repository.Implementation
 {
-    public class CategoriesRepository:EntityBaseRepository<Categories>, ICategoriesRepository
+    public class UserRoleRepository: EntityBaseRepository<UserRole>, IUserRoleRepository
     {
-        public CategoriesRepository(ElearnContext context) : base(context)
+        public UserRoleRepository(ElearnContext context) : base(context)
         {
         }
     }
-}   
+}

@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 using Elearn.Data.Entities.Base;
 
-namespace Elearn.Data.Repository.Interfaces
+namespace Elearn.Data.Repository.Base
 {
 
     public interface IEntityBaseRepository<T>

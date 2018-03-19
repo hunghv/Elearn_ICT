@@ -66,37 +66,49 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ElearnContext.cs" />
+    <Compile Include="Entities\Attachments.cs" />
+    <Compile Include="Entities\NewsComment.cs" />
     <Compile Include="Entities\Categories.cs" />
     <Compile Include="Entities\Base\Entity.cs" />
+    <Compile Include="Entities\Country.cs" />
     <Compile Include="Entities\CoverImage.cs" />
+    <Compile Include="Entities\Like.cs" />
     <Compile Include="Entities\News.cs" />
-    <Compile Include="Migrations\201803171444343_InitialCreate.cs" />
-    <Compile Include="Migrations\201803171444343_InitialCreate.Designer.cs">
-      <DependentUpon>201803171444343_InitialCreate.cs</DependentUpon>
+    <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\SharedNews.cs" />
+    <Compile Include="Entities\Status.cs" />
+    <Compile Include="Entities\UserLoginHistory.cs" />
+    <Compile Include="Entities\UserProfile.cs" />
+    <Compile Include="Entities\UserRole.cs" />
+    <Compile Include="Migrations\201803190349453_Initial.cs" />
+    <Compile Include="Migrations\201803190349453_Initial.Designer.cs">
+      <DependentUpon>201803190349453_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803171543189_InitDatabase.cs" />
-    <Compile Include="Migrations\201803171543189_InitDatabase.Designer.cs">
-      <DependentUpon>201803171543189_InitDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\201803190644592_AddRefer.cs" />
+    <Compile Include="Migrations\201803190644592_AddRefer.Designer.cs">
+      <DependentUpon>201803190644592_AddRefer.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Base\EntityBaseRepository.cs" />
     <Compile Include="Repository\Base\IEntityBaseRepository.cs" />
+    <Compile Include="Repository\Implementation\AttachmentRepository.cs" />
     <Compile Include="Repository\Implementation\CategoriesRepository.cs" />
     <Compile Include="Repository\Implementation\CoverImagesRepository.cs" />
+    <Compile Include="Repository\Implementation\UserRoleRepository.cs" />
     <Compile Include="Repository\Interfaces\IRepositories.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803171444343_InitialCreate.resx">
-      <DependentUpon>201803171444343_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803171543189_InitDatabase.resx">
-      <DependentUpon>201803171543189_InitDatabase.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201803190349453_Initial.resx">
+      <DependentUpon>201803190349453_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803190644592_AddRefer.resx">
+      <DependentUpon>201803190644592_AddRefer.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
