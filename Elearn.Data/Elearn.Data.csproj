@@ -94,7 +94,16 @@
     <Compile Include="Repository\Base\IEntityBaseRepository.cs" />
     <Compile Include="Repository\Implementation\AttachmentRepository.cs" />
     <Compile Include="Repository\Implementation\CategoriesRepository.cs" />
+    <Compile Include="Repository\Implementation\CountryRepository.cs" />
     <Compile Include="Repository\Implementation\CoverImagesRepository.cs" />
+    <Compile Include="Repository\Implementation\LikeRepository.cs" />
+    <Compile Include="Repository\Implementation\NewsCommentRepository.cs" />
+    <Compile Include="Repository\Implementation\NewsRepository.cs" />
+    <Compile Include="Repository\Implementation\RoleRepository.cs" />
+    <Compile Include="Repository\Implementation\ShareNewsRepository.cs" />
+    <Compile Include="Repository\Implementation\StatusRepository.cs" />
+    <Compile Include="Repository\Implementation\UserLoginHistoryRepository.cs" />
+    <Compile Include="Repository\Implementation\UserProfileRepository.cs" />
     <Compile Include="Repository\Implementation\UserRoleRepository.cs" />
     <Compile Include="Repository\Interfaces\IRepositories.cs" />
   </ItemGroup>

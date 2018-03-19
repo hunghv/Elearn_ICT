@@ -49,7 +49,9 @@
     <Compile Include="Mapping\CustomException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CategoriesService.cs" />
+    <Compile Include="Services\CountryService.cs" />
     <Compile Include="Services\Interfaces\ICategoriesService.cs" />
+    <Compile Include="Services\Interfaces\ICountryService.cs" />
     <Compile Include="ViewModels\Request\CategoriesRequest.cs" />
     <Compile Include="ViewModels\Request\PagingRequest.cs" />
     <Compile Include="ViewModels\Response\CategoriesResponse.cs" />
