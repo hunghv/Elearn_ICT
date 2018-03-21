@@ -2,6 +2,11 @@
 {
     public class Constants
     {
+        public static int GetUserId()
+        {
+            return 1;
+        }
+
         public static class Configuration
         {
             

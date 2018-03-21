@@ -1,6 +1,7 @@
 ﻿namespace Service.Services.Interfaces
 {
-    public interface ICountryService
+    public interface IUserProfileServices
     {
+
     }
 }

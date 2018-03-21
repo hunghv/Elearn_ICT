@@ -23,7 +23,7 @@ namespace Elearn.API.DependencyResolution
             For<ElearnContext>().Use<ElearnContext>();
 
             //Services
-            For<ICategoriesService>().Use<CategoriesService>();
+            For<IAdminServices>().Use<AdminServices>();
 
             //Repository
             For<ICategoriesRepository>().Use<CategoriesRepository>();

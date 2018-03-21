@@ -13,11 +13,11 @@ namespace Elearn.API.Controllers
     {
         #region Contructor, Fields
 
-        private readonly ICategoriesService _categoriesService;
+        private readonly IAdminServices _adminServices;
 
-        public AdminController(ICategoriesService categoriesService)
+        public AdminController(IAdminServices adminServices)
         {
-            _categoriesService = categoriesService;
+            _adminServices = adminServices;
         }
 
         #endregion
@@ -30,7 +30,7 @@ namespace Elearn.API.Controllers
         {
             try
             {
-                var users = _categoriesService.GetCategories(request);
+                var users = _adminServices.GetCategories(request);
                 return users != null ? Request.CreateResponse(HttpStatusCode.OK, users) :
                     Request.CreateResponse(HttpStatusCode.NoContent, Constants.ErrorMessageCodes.NoRecordsFoundMessage);
             }
