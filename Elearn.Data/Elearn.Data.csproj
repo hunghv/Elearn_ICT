@@ -54,8 +54,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.4\lib\net45\System.Web.Http.WebHost.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -88,6 +88,10 @@
     <Compile Include="Migrations\201803190644592_AddRefer.Designer.cs">
       <DependentUpon>201803190644592_AddRefer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803211629562_UpdateEntity.cs" />
+    <Compile Include="Migrations\201803211629562_UpdateEntity.Designer.cs">
+      <DependentUpon>201803211629562_UpdateEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Base\EntityBaseRepository.cs" />
@@ -117,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803190644592_AddRefer.resx">
       <DependentUpon>201803190644592_AddRefer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803211629562_UpdateEntity.resx">
+      <DependentUpon>201803211629562_UpdateEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

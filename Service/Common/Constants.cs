@@ -1,10 +1,16 @@
-﻿namespace Service.Common
+﻿using System;
+
+namespace Service.Common
 {
     public class Constants
     {
         public static int GetUserId()
         {
             return 1;
+        }
+        public static DateTime GetDateNow()
+        {
+            return DateTime.Now;
         }
 
         public static class Configuration

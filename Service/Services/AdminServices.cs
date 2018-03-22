@@ -36,18 +36,64 @@ namespace Service.Services
         public IPagedResults<CategoriesResponse> GetCategories(CategoriesRequest request)
         {
             var respone = new PagedResults<CategoriesResponse>();
-            IQueryable<Categories> query = _categoriesRepository.GetAllNoneDeleted().OrderBy(x => x.Name);
+            var query = _categoriesRepository.GetAllNoneDeleted();
             respone.Total = query.Count();
 
-            if (request != null && request.Skip.HasValue && request.Take.HasValue)
+            if (request?.Skip != null && request.Take.HasValue)
                 query = query.Skip(request.Skip.Value).Take(request.Take.Value == 0 ? respone.Total : request.Take.Value);
 
-            var categorieses = query.ToList();
-            var result = Mapper.Map<List<CategoriesResponse>>(categorieses);
+            var categorieses = query.OrderBy(x=>x.Name).ToList();
+           
+            var result = Mapper.Map<List<Categories>,List<CategoriesResponse>>(categorieses);
             respone.Data = result;
             return respone;
         }
+        
+        public int? SaveCategories(CategoriesSaveRequest request)
+        {
+            if (request.Id!=null)
+            {
+                var categories = _categoriesRepository.GetSingleNoneDeleted(x => x.Id == request.Id);
+                //update
+                if (categories!=null)
+                {
+                    categories.Name = request.Name;
+                    categories.Description = request.Description;
+                    _categoriesRepository.Update(categories);
+                }
+                if (categories != null) return categories.Id;
+            }
+            else
+            {
+                //add new
+                var newCat = new Categories
+                {
+                    Name = request.Name,
+                    Description = request.Description,
+                    CreatedBy = Constants.GetUserId(),
+                    ModifiedBy = Constants.GetUserId(),
+                    CreatedDate = Constants.GetDateNow(),
+                    ModifiedDate = Constants.GetDateNow()
+                };
+                _categoriesRepository.Add(newCat);
+                _categoriesRepository.Commit();
+                return newCat.Id;
+            }
+            return null;
+        }
 
+        public bool DeleteCategories(CategoriesDelRequest request)
+        {
+            var categories = _categoriesRepository.GetSingleNoneDeleted(x => x.Id == request.Id);
+            if (categories!=null)
+            {
+                categories.IsDeleted = true;
+                categories.DeletedBy = Constants.GetUserId();
+                categories.DeletedDate = Constants.GetDateNow();
+                _categoriesRepository.Update(categories);
+            }
+            return _categoriesRepository.Commit();
+        }
         #endregion
 
         #region Country

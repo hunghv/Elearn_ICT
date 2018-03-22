@@ -16,6 +16,7 @@ namespace Service.Mapping
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<Categories, CategoriesResponse>();
+                cfg.CreateMap<Country, CountryResponse>();
             });
         }
     }
