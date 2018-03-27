@@ -10,7 +10,7 @@ using Service.ViewModels.Response;
 
 namespace Service.Services
 {
-    public class AdminServices : IAdminServices
+    public class AdminServices : PaggingHelper,IAdminServices
     {
         #region Declare Property
 
@@ -38,13 +38,21 @@ namespace Service.Services
             var respone = new PagedResults<CategoriesResponse>();
             var query = _categoriesRepository.GetAllNoneDeleted();
             respone.Total = query.Count();
-
+           //sort  data
+            if (!string.IsNullOrEmpty(request?.SortField))
+            {
+                OrderBy(ref query, request);
+            }
+            else
+            {
+                query = query.OrderBy(x => x.Name);
+            }
+            //pagging data
             if (request?.Skip != null && request.Take.HasValue)
-                query = query.Skip(request.Skip.Value).Take(request.Take.Value == 0 ? respone.Total : request.Take.Value);
-
-            var categorieses = query.OrderBy(x=>x.Name).ToList();
-           
-            var result = Mapper.Map<List<Categories>,List<CategoriesResponse>>(categorieses);
+            {
+                Paging(ref query, request);
+            }
+            var result = Mapper.Map<List<Categories>,List<CategoriesResponse>>(query.ToList());
             respone.Data = result;
             return respone;
         }
