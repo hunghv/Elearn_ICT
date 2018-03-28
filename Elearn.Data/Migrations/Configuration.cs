@@ -1,16 +1,12 @@
 namespace Elearn.Data.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Elearn.Data.Common.ElearnContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            ContextKey = "Elearn.Data.Common.ElearnContext";
         }
 
         protected override void Seed(Elearn.Data.Common.ElearnContext context)

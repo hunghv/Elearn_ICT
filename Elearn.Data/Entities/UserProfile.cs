@@ -30,7 +30,6 @@ namespace Elearn.Data.Entities
         public int? CountryId { get; set; }
         [MaxLength(30)]
         public string TelephoneNumber { get; set; }
-        [MaxLength(80)]
         
         public ICollection<UserRole> UserRoles { get; set; }
         public Country Country { get; set; }

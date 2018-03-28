@@ -40,7 +40,51 @@ namespace Elearn.API.Controllers
             }
         }
 
+        [Route("Categories/Update")]
+        [HttpPost]
+        public HttpResponseMessage UpdateCategories(CategoriesSaveRequest request)
+        {
+            try
+            {
+                var result = _adminServices.SaveCategories(request);
+                if (result!=null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, result);
+                }
+                return Request.CreateResponse(HttpStatusCode.NotModified, false);
+            }
+            catch (Exception exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, exception.Message);
+            }
+        }
+
+        [Route("Categories/Delete")]
+        [HttpPost]
+        public HttpResponseMessage DeleteCategories(int id)
+        {
+            try
+            {
+                var result = _adminServices.DeleteCategories(id);
+                if (result)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK,true);
+                }
+                return Request.CreateResponse(HttpStatusCode.NotModified, false);
+            }
+            catch (Exception exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, exception.Message);
+            }
+        }
 
         #endregion
+
+        #region Country
+
+
+
+        #endregion
+
     }
 }

@@ -68,6 +68,7 @@ namespace Service.Services
                     categories.Name = request.Name;
                     categories.Description = request.Description;
                     _categoriesRepository.Update(categories);
+                    _categoriesRepository.Commit();
                 }
                 if (categories != null) return categories.Id;
             }
@@ -90,17 +91,22 @@ namespace Service.Services
             return null;
         }
 
-        public bool DeleteCategories(CategoriesDelRequest request)
+        public bool DeleteCategories(int id)
         {
-            var categories = _categoriesRepository.GetSingleNoneDeleted(x => x.Id == request.Id);
+            var categories = _categoriesRepository.GetSingleNoneDeleted(x => x.Id == id);
             if (categories!=null)
             {
                 categories.IsDeleted = true;
                 categories.DeletedBy = Constants.GetUserId();
                 categories.DeletedDate = Constants.GetDateNow();
                 _categoriesRepository.Update(categories);
+                return _categoriesRepository.Commit();
             }
-            return _categoriesRepository.Commit();
+            else
+            {
+                return false;
+            }
+            
         }
         #endregion
 
