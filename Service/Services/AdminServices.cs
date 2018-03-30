@@ -10,7 +10,7 @@ using Service.ViewModels.Response;
 
 namespace Service.Services
 {
-    public class AdminServices : PaggingHelper,IAdminServices
+    public class AdminServices : PaggingHelper, IAdminServices
     {
         #region Declare Property
 
@@ -38,7 +38,7 @@ namespace Service.Services
             var respone = new PagedResults<CategoriesResponse>();
             var query = _categoriesRepository.GetAllNoneDeleted();
             respone.Total = query.Count();
-           //sort  data
+            //sort  data
             if (!string.IsNullOrEmpty(request?.SortField))
             {
                 OrderBy(ref query, request);
@@ -52,21 +52,23 @@ namespace Service.Services
             {
                 Paging(ref query, request);
             }
-            var result = Mapper.Map<List<Categories>,List<CategoriesResponse>>(query.ToList());
+            var result = Mapper.Map<List<Categories>, List<CategoriesResponse>>(query.ToList());
             respone.Data = result;
             return respone;
         }
-        
+
         public int? SaveCategories(CategoriesSaveRequest request)
         {
-            if (request.Id!=null)
+            if (request.Id != null)
             {
                 var categories = _categoriesRepository.GetSingleNoneDeleted(x => x.Id == request.Id);
                 //update
-                if (categories!=null)
+                if (categories != null)
                 {
                     categories.Name = request.Name;
                     categories.Description = request.Description;
+                    categories.ModifiedDate = Constants.GetDateNow();
+                    categories.ModifiedBy = Constants.GetUserId();
                     _categoriesRepository.Update(categories);
                     _categoriesRepository.Commit();
                 }
@@ -94,7 +96,7 @@ namespace Service.Services
         public bool DeleteCategories(int id)
         {
             var categories = _categoriesRepository.GetSingleNoneDeleted(x => x.Id == id);
-            if (categories!=null)
+            if (categories != null)
             {
                 categories.IsDeleted = true;
                 categories.DeletedBy = Constants.GetUserId();
@@ -106,7 +108,7 @@ namespace Service.Services
             {
                 return false;
             }
-            
+
         }
         #endregion
 
@@ -115,17 +117,79 @@ namespace Service.Services
         public IPagedResults<CountryResponse> GetCountrys(CountryRequest request)
         {
             var respone = new PagedResults<CountryResponse>();
-            var query =  _countryRepository.GetAllNoneDeleted();
+            var query = _countryRepository.GetAllNoneDeleted();
             respone.Total = query.Count();
-
-            if (request != null && request.Skip.HasValue && request.Take.HasValue)
-                query = query.Skip(request.Skip.Value).Take(request.Take.Value == 0 ? respone.Total : request.Take.Value);
-
-            var categorieses =  query.OrderBy(x => x.CountryName).ToList();
-            respone.Data = Mapper.Map<List<CountryResponse>>(categorieses);
+            //sort  data
+            if (!string.IsNullOrEmpty(request?.SortField))
+            {
+                OrderBy(ref query, request);
+            }
+            else
+            {
+                query = query.OrderBy(x => x.CountryName);
+            }
+            //pagging data
+            if (request?.Skip != null && request.Take.HasValue)
+            {
+                Paging(ref query, request);
+            }
+            var result = Mapper.Map<List<Country>, List<CountryResponse>>(query.ToList());
+            respone.Data = result;
             return respone;
         }
 
+        public int? UpdateCountrys(CountrySaveRequest request)
+        {
+            if (request.Id != null)
+            {
+                var countries = _countryRepository.GetSingleNoneDeleted(x => x.Id == request.Id);
+                //update
+                if (countries != null)
+                {
+                    countries.CountryName = request.CountryName;
+                    countries.ModifiedDate = Constants.GetDateNow();
+                    countries.ModifiedBy = Constants.GetUserId();
+                    _countryRepository.Update(countries);
+                    _countryRepository.Commit();
+                }
+                if (countries != null) return countries.Id;
+            }
+            else
+            {
+                //add new
+                var newCountry = new Country
+                {
+                    CountryName = request.CountryName,
+                    CreatedBy = Constants.GetUserId(),
+                    ModifiedBy = Constants.GetUserId(),
+                    CreatedDate = Constants.GetDateNow(),
+                    ModifiedDate = Constants.GetDateNow()
+                };
+                _countryRepository.Add(newCountry);
+                _countryRepository.Commit();
+                return newCountry.Id;
+            }
+            return null;
+        }
+
+        public bool DeleteCountries(int id)
+        {
+            var countries = _countryRepository.GetSingleNoneDeleted(x => x.Id == id);
+
+            if (countries != null)
+            {
+                countries.IsDeleted = true;
+                countries.DeletedBy = Constants.GetUserId();
+                countries.DeletedDate = Constants.GetDateNow();
+                _countryRepository.Update(countries);
+                return _countryRepository.Commit();
+            }
+            else
+            {
+                return false;
+            }
+
+        }
         #endregion
 
         #region Role

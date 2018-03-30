@@ -21,6 +21,10 @@ namespace Service.Services.Interfaces
 
         IPagedResults<CountryResponse> GetCountrys(CountryRequest request);
 
+        int? UpdateCountrys(CountrySaveRequest request);
+
+        bool DeleteCountries(int id);
+
         #endregion
 
     }

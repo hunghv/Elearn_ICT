@@ -47,7 +47,7 @@ namespace Elearn.API.Controllers
             try
             {
                 var result = _adminServices.SaveCategories(request);
-                if (result!=null)
+                if (result != null)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, result);
                 }
@@ -68,7 +68,7 @@ namespace Elearn.API.Controllers
                 var result = _adminServices.DeleteCategories(id);
                 if (result)
                 {
-                    return Request.CreateResponse(HttpStatusCode.OK,true);
+                    return Request.CreateResponse(HttpStatusCode.OK, true);
                 }
                 return Request.CreateResponse(HttpStatusCode.NotModified, false);
             }
@@ -82,8 +82,60 @@ namespace Elearn.API.Controllers
 
         #region Country
 
+        [Route("Country/GetAllCountries")]
+        [HttpGet]
+        public HttpResponseMessage GetAllCountries([FromUri] CountryRequest request)
+        {
+            try
+            {
+                var users = _adminServices.GetCountrys(request);
+                return users != null ? Request.CreateResponse(HttpStatusCode.OK, users) :
+                    Request.CreateResponse(HttpStatusCode.NoContent, Constants.ErrorMessageCodes.NoRecordsFoundMessage);
+            }
+            catch (Exception exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, exception.Message);
+            }
+        }
+
+        [Route("Country/Update")]
+        [HttpPost]
+        public HttpResponseMessage UpdateCountries(CountrySaveRequest request)
+        {
+            try
+            {
+                var result = _adminServices.UpdateCountrys(request);
+                if (result != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, result);
+                }
+                return Request.CreateResponse(HttpStatusCode.NotModified, false);
+            }
+            catch (Exception exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, exception.Message);
+            }
+        }
 
 
+        [Route("Country/Delete")]
+        [HttpPost]
+        public HttpResponseMessage DeleteCountries(int id)
+        {
+            try
+            {
+                var result = _adminServices.DeleteCountries(id);
+                if (result)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, true);
+                }
+                return Request.CreateResponse(HttpStatusCode.NotModified, false);
+            }
+            catch (Exception exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, exception.Message);
+            }
+        }
         #endregion
 
     }
