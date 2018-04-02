@@ -34,6 +34,10 @@
       <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -71,10 +75,12 @@
     <Compile Include="ViewModels\Request\CategoriesRequest.cs" />
     <Compile Include="ViewModels\Request\CountryRequest.cs" />
     <Compile Include="ViewModels\Request\FileInfosRequest.cs" />
+    <Compile Include="ViewModels\Request\LoginRequest.cs" />
     <Compile Include="ViewModels\Request\PagingRequest.cs" />
     <Compile Include="ViewModels\Response\CategoriesResponse.cs" />
     <Compile Include="ViewModels\Response\CountryResponse.cs" />
     <Compile Include="ViewModels\Response\FileInfosResponse.cs" />
+    <Compile Include="ViewModels\Response\LoginResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\Validator\" />
@@ -86,6 +92,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
