@@ -21,7 +21,7 @@ namespace Service.Services
         {
             _newsRepository = newsRepository;
         }
-
+        //comment
         #endregion
 
         #region Public Method 
