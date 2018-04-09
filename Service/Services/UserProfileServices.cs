@@ -6,7 +6,7 @@ using Service.ViewModels.Request;
 
 namespace Service.Services
 {
-    class UserProfileServices : IUserProfileServices
+    public class UserProfileServices : IUserProfileServices
     {
         #region Declare Property
 

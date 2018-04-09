@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\CryptoMD5.cs" />
     <Compile Include="Common\Enum.cs" />
     <Compile Include="Common\EnumHelper.cs" />
     <Compile Include="Common\FileHelper.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Services\Interfaces\INewsServices.cs" />
     <Compile Include="Services\Interfaces\IUserProfileServices.cs" />
     <Compile Include="Services\NewsServices.cs" />
+    <Compile Include="Services\UserProfileServices.cs" />
     <Compile Include="ViewModels\Request\CategoriesRequest.cs" />
     <Compile Include="ViewModels\Request\CountryRequest.cs" />
     <Compile Include="ViewModels\Request\FileInfosRequest.cs" />
