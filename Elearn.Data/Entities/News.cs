@@ -12,7 +12,7 @@ namespace Elearn.Data.Entities
             NewsComments = new List<NewsComment>();
         }
         public string Title { get; set; }
-        public string Image { get; set; }
+        public int ImageId { get; set; }
         public DateTime PostedDate { get; set; }
         public DateTime? PublicDate { get; set; }
         public bool Available { get; set; }
@@ -23,6 +23,7 @@ namespace Elearn.Data.Entities
         public int PostedBy { get; set; }
         public virtual Categories Category { get; set; }
         public virtual Status Status { get; set; }
+        public virtual CoverImage Image { get; set; }
 
         public ICollection<ShareNews> SharedNews { get; set; }
         public ICollection<NewsComment> NewsComments { get; set; }

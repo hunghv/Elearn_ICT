@@ -71,11 +71,14 @@
     <Compile Include="Services\CoverImageServices.cs" />
     <Compile Include="Services\Interfaces\IAdminServices.cs" />
     <Compile Include="Services\Interfaces\ICoverImageServices.cs" />
+    <Compile Include="Services\Interfaces\INewsServices.cs" />
     <Compile Include="Services\Interfaces\IUserProfileServices.cs" />
+    <Compile Include="Services\NewsServices.cs" />
     <Compile Include="ViewModels\Request\CategoriesRequest.cs" />
     <Compile Include="ViewModels\Request\CountryRequest.cs" />
     <Compile Include="ViewModels\Request\FileInfosRequest.cs" />
     <Compile Include="ViewModels\Request\LoginRequest.cs" />
+    <Compile Include="ViewModels\Request\NewsRequest.cs" />
     <Compile Include="ViewModels\Request\PagingRequest.cs" />
     <Compile Include="ViewModels\Response\CategoriesResponse.cs" />
     <Compile Include="ViewModels\Response\CountryResponse.cs" />
