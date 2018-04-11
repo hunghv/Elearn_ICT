@@ -88,6 +88,8 @@
     <Compile Include="ViewModels\Response\CountryResponse.cs" />
     <Compile Include="ViewModels\Response\FileInfosResponse.cs" />
     <Compile Include="ViewModels\Response\LoginResponse.cs" />
+    <Compile Include="ViewModels\Response\NewsResponse.cs" />
+    <Compile Include="ViewModels\Response\UserProfileResponse.cs" />
     <Compile Include="ViewModels\Validator\Email.cs" />
   </ItemGroup>
   <ItemGroup />

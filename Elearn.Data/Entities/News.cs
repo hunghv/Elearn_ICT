@@ -9,6 +9,7 @@ namespace Elearn.Data.Entities
         public News()
         {
             SharedNews = new List<ShareNews>();
+            NewsLike = new List<Like>();
             NewsComments = new List<NewsComment>();
         }
         public string Title { get; set; }
@@ -27,7 +28,6 @@ namespace Elearn.Data.Entities
 
         public ICollection<ShareNews> SharedNews { get; set; }
         public ICollection<NewsComment> NewsComments { get; set; }
-        
-
+        public ICollection<Like> NewsLike { get; set; }
     }
 }

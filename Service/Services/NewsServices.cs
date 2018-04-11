@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Elearn.Data.Entities;
 using Elearn.Data.Repository.Interfaces;
 using Service.Common;
 using Service.Services.Interfaces;
 using Service.ViewModels.Request;
+using Service.ViewModels.Response;
 
 namespace Service.Services
 {
@@ -63,6 +65,13 @@ namespace Service.Services
                 news.ModifiedDate = DateNow;
             }
             return 0;
+        }
+
+        public NewsResponse GetNewsById()
+        {
+            var result = new NewsResponse();
+
+            return result;
         }
 
         #endregion

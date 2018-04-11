@@ -8,6 +8,7 @@ namespace Elearn.Data.Entities
         public NewsComment()
         {
             ChildComments = new List<NewsComment>();
+            NewsLike = new List<Like>();
         }
 
         public int NewsId { get; set; }
@@ -19,6 +20,7 @@ namespace Elearn.Data.Entities
         public ICollection<NewsComment> ChildComments { get; set; }
         public virtual News ParentComment { get; set; }
         public virtual UserProfile UserProfile { get; set; }
+        public ICollection<Like> NewsLike { get; set; }
     }
 
 }
