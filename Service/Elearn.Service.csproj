@@ -44,6 +44,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -65,6 +66,7 @@
     <Compile Include="Common\EnumHelper.cs" />
     <Compile Include="Common\FileHelper.cs" />
     <Compile Include="Common\PagedResults.cs" />
+    <Compile Include="Common\Xmail.cs" />
     <Compile Include="Mapping\AutomapperConfiguration.cs" />
     <Compile Include="Mapping\CustomException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,10 +88,9 @@
     <Compile Include="ViewModels\Response\CountryResponse.cs" />
     <Compile Include="ViewModels\Response\FileInfosResponse.cs" />
     <Compile Include="ViewModels\Response\LoginResponse.cs" />
+    <Compile Include="ViewModels\Validator\Email.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\Validator\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Elearn.Data\Elearn.Data.csproj">
       <Project>{298bf127-2cda-472c-8119-99288b960626}</Project>

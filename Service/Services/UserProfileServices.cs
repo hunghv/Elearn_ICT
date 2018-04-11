@@ -1,8 +1,10 @@
-﻿using Elearn.Data.Entities;
+﻿using System;
+using Elearn.Data.Entities;
 using Elearn.Data.Repository.Interfaces;
 using Service.Common;
 using Service.Services.Interfaces;
 using Service.ViewModels.Request;
+using Service.ViewModels.Validator;
 
 namespace Service.Services
 {
@@ -41,7 +43,30 @@ namespace Service.Services
                 ModifiedDate = Constants.GetDateNow()
             };
             _userProfileRepository.Add(newUserProfile);
-            return _userProfileRepository.Commit();
+            var isOk = _userProfileRepository.Commit();
+            if (isOk)
+            {
+                try
+                {
+                    //get mail template to send
+                    var email = new EmailViewModel
+                    {
+                        From = "Web Master <System.edu@gmail.com>",
+                        Body = "inspectionPackFunc.openFormAddNewInspectionLocationDefinition('5133991c-192b-4154-9f26-9ab9cbfb89ad','f459d32e-adfc-460f-b00e-d36703f8f69c')",
+                        To = newUserProfile.Email,
+                        Cc = "hunghvhpu@gmail.com",
+                        Subject = "test mail",
+                        Bcc = "",
+                        Attachments = ""
+                    };
+                    XMail.Send(email);
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
+            }
+            return isOk;
         }
 
         #endregion

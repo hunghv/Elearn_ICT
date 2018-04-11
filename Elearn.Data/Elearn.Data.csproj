@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Common\ElearnContext.cs" />
     <Compile Include="Entities\Attachments.cs" />
+    <Compile Include="Entities\EmailTemplate.cs" />
     <Compile Include="Entities\NewsComment.cs" />
     <Compile Include="Entities\Categories.cs" />
     <Compile Include="Entities\Base\Entity.cs" />

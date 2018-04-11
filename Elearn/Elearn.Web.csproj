@@ -284,6 +284,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Config\AppSettings.config" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -314,6 +315,7 @@
     <Content Include="Resource\Scripts\bootstrap.js" />
     <Content Include="Resource\Scripts\bootstrap.min.js" />
     <Content Include="Guideline\GuidelineBuilFuseApp.docx" />
+    <Content Include="Config\ConnectionString.config" />
     <None Include="Resource\Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Resource\Scripts\jquery-1.10.2.js" />
     <Content Include="Resource\Scripts\jquery-1.10.2.min.js" />

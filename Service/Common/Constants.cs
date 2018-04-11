@@ -2,6 +2,21 @@
 
 namespace Service.Common
 {
+    public static class ConfigurationMail
+    {
+        public static readonly string SsoLogout = "SSOLogout";
+        public static readonly string SmtpServer = "SMTPServer";
+        public static readonly string SmtpUser = "SMTPUser";
+        public static readonly string SmtpPassword = "SMTPPassword";
+        public static readonly string SmtpPort = "SMTPPort";
+        public static readonly string SkillWebUrl = "SkillWebUrl";
+        public static readonly string IsSendMail = "IsSendMail";
+        public static readonly string SmtPgmail = "SMTPgmail";
+    };
+        
+
+
+
     public class Constants
     {
         public static int GetUserId()
@@ -11,11 +26,6 @@ namespace Service.Common
         public static DateTime GetDateNow()
         {
             return DateTime.Now;
-        }
-
-        public static class Configuration
-        {
-            
         }
 
         public static class ErrorMessageCodes
