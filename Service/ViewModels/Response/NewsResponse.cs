@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Elearn.Data.Entities;
 
 namespace Service.ViewModels.Response
 {
@@ -12,12 +11,12 @@ namespace Service.ViewModels.Response
         public DateTime? PublicDate { get; set; }
         public bool Available { get; set; }
         public string Description { get; set; }
-        public int CategoryId { get; set; }
-        public int StatusId { get; set; }
+        public string Category { get; set; }
+        public string Status { get; set; }
         public string Content { get; set; }
-        public int PostedBy { get; set; }
+        public string PostedBy { get; set; }
         public int LikeCount { get; set; }
-        public int LikeShared { get; set; }
+        public int SharedCount { get; set; }
         public List<CommentView> LstComment { get; set; }
     }
 
@@ -26,6 +25,7 @@ namespace Service.ViewModels.Response
         public string Comment { get; set; }
         public UserProfileResponse User { get; set; }
         public DateTime CreatedDate { get; set; }
-
+        public int LikeCount { get; set; }
+        public int SharedCount { get; set; }
     }
 }

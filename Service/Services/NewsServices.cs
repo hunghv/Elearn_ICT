@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Elearn.Data.Common;
 using Elearn.Data.Entities;
 using Elearn.Data.Repository.Interfaces;
 using Service.Common;
@@ -14,14 +16,16 @@ namespace Service.Services
         #region Declare Property
 
         private readonly INewsRepository _newsRepository;
+        private readonly ElearnContext _context;
         public DateTime DateNow = DateTime.Now;
         #endregion
 
         #region Constructure
 
-        public NewsServices(INewsRepository newsRepository)
+        public NewsServices(INewsRepository newsRepository, ElearnContext context)
         {
             _newsRepository = newsRepository;
+            _context = context;
         }
         //comment
         #endregion
@@ -41,7 +45,7 @@ namespace Service.Services
                     Content = request.Content,
                     Description = request.Description,
                     Available = false,
-                    PostedBy = Constants.GetUserId(),
+                    PostedById = Constants.GetUserId(),
                     Title = request.Title,
                     StatusId = request.StatusId,
                     PostedDate = DateNow,
@@ -60,18 +64,31 @@ namespace Service.Services
                 news.Content = request.Content;
                 news.Description = request.Description;
                 news.ImageId = request.ImageId;
-                news.PostedBy = Constants.GetUserId();
+                news.PostedById = Constants.GetUserId();
                 news.ModifiedBy = Constants.GetUserId();
                 news.ModifiedDate = DateNow;
             }
             return 0;
         }
 
-        public NewsResponse GetNewsById()
+        public NewsResponse GetNewsById(int id)
         {
-            var result = new NewsResponse();
+            var query = _newsRepository.GetAllNoneDeleted().Where(x => x.Id == id).Select(x => new NewsResponse
+            {
+                Title = x.Title,
+                Content = x.Content,
+                Category = x.Category.Name,
 
-            return result;
+                Description = x.Description,
+                PostedBy = x.PostedBy.DisplayName,
+                PublicDate = x.PublicDate,
+                Status = x.Status.Name,
+                PostedDate = x.CreatedDate,
+                Available = x.Available,
+                ImageId = x.ImageId,
+               // LikeCount = _context.Likes.Where(x=>x.)
+            }).FirstOrDefault();
+            return query;
         }
 
         #endregion
