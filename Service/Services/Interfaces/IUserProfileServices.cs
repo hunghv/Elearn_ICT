@@ -1,4 +1,5 @@
-﻿using Service.ViewModels.Request;
+﻿using System;
+using Service.ViewModels.Request;
 
 namespace Service.Services.Interfaces
 {
@@ -7,6 +8,10 @@ namespace Service.Services.Interfaces
         #region UserProfile
 
         bool SignUp(LoginRequest request);
+
+        Guid? Login(LoginRequest request);
+
+        bool Logout(Guid guid);
 
         #endregion
     }

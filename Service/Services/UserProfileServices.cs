@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using Elearn.Data.Entities;
 using Elearn.Data.Repository.Interfaces;
 using Service.Common;
@@ -13,15 +14,19 @@ namespace Service.Services
         #region Declare Property
 
         private readonly IUserProfileRepository _userProfileRepository;
+        private readonly IUserLoginHistoryRepository _userLoginHistoryRepository;
 
-        public UserProfileServices(IUserProfileRepository userProfileRepository)
+        public UserProfileServices(IUserProfileRepository userProfileRepository, IUserLoginHistoryRepository userLoginHistoryRepository)
         {
             _userProfileRepository = userProfileRepository;
+            _userLoginHistoryRepository = userLoginHistoryRepository;
         }
 
         #endregion
 
         #region Public Method
+
+        #region Sign Up
 
         //Sign up
         public bool SignUp(LoginRequest request)
@@ -68,6 +73,56 @@ namespace Service.Services
             }
             return isOk;
         }
+        #endregion
+
+        #region Login
+
+        public Guid? Login(LoginRequest request)
+        {
+            var email = _userProfileRepository.GetSingleNoneDeleted(x => x.Email == request.Email);
+            var pwd = CryptoMd5.Encode(request.Password);
+            if (email != null && pwd == email.Password)
+            {
+                var newUserLoginHistory = new UserLoginHistory
+                {
+                    UserId = Constants.GetUserId(),
+                    AccessToken = Guid.NewGuid(),
+                    IsAppToken = true,
+                    IsLoggedOut = false,
+                    CreatedBy = Constants.GetUserId(),
+                    ModifiedBy = Constants.GetUserId(),
+                    CreatedDate = Constants.GetDateNow(),
+                    ModifiedDate = Constants.GetDateNow()
+                };
+                _userLoginHistoryRepository.Add(newUserLoginHistory);
+                _userLoginHistoryRepository.Commit();
+                return newUserLoginHistory.AccessToken;
+            }
+            return null;
+        }
+        #endregion
+
+        #region Logout
+
+        public bool Logout(Guid guid)
+        {
+            var userLoginHistory = _userLoginHistoryRepository.GetSingleNoneDeleted(history => history.AccessToken == guid);
+            if (userLoginHistory != null)
+            {
+
+                userLoginHistory.IsLoggedOut = true;
+                userLoginHistory.CreatedBy = Constants.GetUserId();
+                userLoginHistory.ModifiedBy = Constants.GetUserId();
+                userLoginHistory.CreatedDate = Constants.GetDateNow();
+                userLoginHistory.ModifiedDate = Constants.GetDateNow();
+                _userLoginHistoryRepository.Update(userLoginHistory);
+                _userLoginHistoryRepository.Commit();
+                return true;
+            }
+            return false;
+        }
+
+        #endregion
 
         #endregion
     }
