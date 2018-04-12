@@ -16,4 +16,7 @@ namespace Service.ViewModels.Request
         public string Content { get; set; }
         public int PostedBy { get; set; }
     }
+    public class NewsRequestViewAll : PagingRequest
+    {
+    }
 }

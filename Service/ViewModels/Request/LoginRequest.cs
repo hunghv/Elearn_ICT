@@ -11,12 +11,7 @@ namespace Service.ViewModels.Request
         public string Email { get; set; }
     }
 
-    public class LoginClient
-    {
-        public string Ip;
-        public string HostName;
-        public string UserAgent;
-    }
+   
 
     public class LoginRequestValidator : AbstractValidator<LoginRequest>
     {
