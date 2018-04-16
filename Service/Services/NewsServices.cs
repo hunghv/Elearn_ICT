@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Elearn.Data.Common;
 using Elearn.Data.Entities;
 using Elearn.Data.Repository.Interfaces;
@@ -86,9 +85,73 @@ namespace Service.Services
                 PostedDate = x.CreatedDate,
                 Available = x.Available,
                 ImageId = x.ImageId,
-               // LikeCount = _context.Likes.Where(x=>x.)
+                LikeCount = _context.Likes.Count(c => c.NewsId==id),
+                SharedCount = _context.ShareNews.Count(s=>s.NewsId==id),
+                LstComment = _context.NewsComments.Where(cm=>cm.NewsId==id).Select(nc => new CommentView
+                {
+                    CreatedDate = nc.CreatedDate,
+                    Comment = nc.Comment,
+                    LikeCount = _context.Likes.Count(c => c.NewsId == nc.Id),
+                    SharedCount = _context.ShareNews.Count(s => s.NewsId == nc.Id),
+                    User = _context.UserProfiles.Where(u=>u.Id==nc.UserProfileId).Select(user=>new UserProfileResponse
+                    {
+                        DisplayName = user.DisplayName,
+                        ThumbnailPhoto = user.ThumbnailPhoto
+                    }).FirstOrDefault()
+                }).ToList()
+
             }).FirstOrDefault();
             return query;
+        }
+
+        public PagedResults<NewsResponse> GetNews(NewsRequestViewAll request)
+        {
+            var respone = new PagedResults<NewsResponse>();
+            var query = _newsRepository.GetAllNoneDeleted().Select(x => new NewsResponse
+            {
+                Title = x.Title,
+                Content = x.Content,
+                Category = x.Category.Name,
+
+                Description = x.Description,
+                PostedBy = x.PostedBy.DisplayName,
+                PublicDate = x.PublicDate,
+                Status = x.Status.Name,
+                PostedDate = x.CreatedDate,
+                Available = x.Available,
+                ImageId = x.ImageId,
+                LikeCount = _context.Likes.Count(c => c.NewsId == x.Id),
+                SharedCount = _context.ShareNews.Count(s => s.NewsId == x.Id),
+                LstComment = _context.NewsComments.Where(cm => cm.NewsId == x.Id).Select(nc => new CommentView
+                {
+                    CreatedDate = nc.CreatedDate,
+                    Comment = nc.Comment,
+                    LikeCount = _context.Likes.Count(c => c.NewsId == nc.Id),
+                    SharedCount = _context.ShareNews.Count(s => s.NewsId == nc.Id),
+                    User = _context.UserProfiles.Where(u => u.Id == nc.UserProfileId).Select(user => new UserProfileResponse
+                    {
+                        DisplayName = user.DisplayName,
+                        ThumbnailPhoto = user.ThumbnailPhoto
+                    }).FirstOrDefault()
+                }).ToList()
+            });
+            respone.Total = query.Count();
+            //sort  data
+            if (!string.IsNullOrEmpty(request?.SortField))
+            {
+                OrderBy(ref query, request);
+            }
+            else
+            {
+                query = query.OrderBy(x => x.Title);
+            }
+            //pagging data
+            if (request?.Skip != null && request.Take.HasValue)
+            {
+                Paging(ref query, request);
+            }
+            
+            return respone;
         }
 
         #endregion
