@@ -58,6 +58,43 @@ namespace Elearn.API.Controllers
             }
         }
 
+        [Route("Logout")]
+        [HttpPost]
+        public HttpResponseMessage Logout(Guid guid)
+        {
+            try
+            {
+                var result = _userProfileServices.Logout(guid);
+                if (result)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, true);
+                }
+                return Request.CreateResponse(HttpStatusCode.NotModified, false);
+            }
+            catch (Exception exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, exception.Message);
+            }
+        }
+
+        [Route("UpdateProfile")]
+        [HttpPost]
+        public HttpResponseMessage UpdateProfileUser(userProfileUpdateRequest request)
+        {
+            try
+            {
+                var result = _userProfileServices.UpdateProfileUser(request);
+                if (result != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, result);
+                }
+                return Request.CreateResponse(HttpStatusCode.NotModified, false);
+            }
+            catch (Exception exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, exception.Message);
+            }
+        }
         #endregion
     }
 }

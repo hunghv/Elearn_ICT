@@ -13,6 +13,8 @@ namespace Service.Services.Interfaces
 
         bool Logout(Guid guid);
 
+        int? UpdateProfileUser(userProfileUpdateRequest request);
+
         #endregion
     }
 }

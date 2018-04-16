@@ -27,7 +27,6 @@ namespace Service.Services
         #region Public Method
 
         #region Sign Up
-
         //Sign up
         public bool SignUp(LoginRequest request)
         {
@@ -120,6 +119,34 @@ namespace Service.Services
                 return true;
             }
             return false;
+        }
+
+        #endregion
+
+        #region Update ProfileUser
+
+        public int? UpdateProfileUser(userProfileUpdateRequest request)
+        {
+            if (request.Id != null)
+            {
+                var userProfile = _userProfileRepository.GetSingleNoneDeleted(x => x.Id == request.Id);
+                //update
+                if (userProfile != null)
+                {
+                    userProfile.CountryId = request.CountryId;
+                    userProfile.DisplayName = request.DisplayName;
+                    userProfile.Password = request.Password;
+                    userProfile.TelephoneNumber = request.TelephoneNumber;
+                    userProfile.ThumbnailPhoto = request.ThumbnailPhoto;
+                    userProfile.NickName = request.NickName;
+                    userProfile.ModifiedDate = Constants.GetDateNow();
+                    userProfile.ModifiedBy = Constants.GetUserId();
+                    _userProfileRepository.Update(userProfile);
+                    _userProfileRepository.Commit();
+                }
+                if (userProfile != null) return userProfile.Id;
+            }
+            return null;
         }
 
         #endregion

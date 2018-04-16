@@ -92,6 +92,7 @@
     <Compile Include="ViewModels\Request\LoginRequest.cs" />
     <Compile Include="ViewModels\Request\NewsRequest.cs" />
     <Compile Include="ViewModels\Request\PagingRequest.cs" />
+    <Compile Include="ViewModels\Request\UserProfileRequest.cs" />
     <Compile Include="ViewModels\Response\CategoriesResponse.cs" />
     <Compile Include="ViewModels\Response\CountryResponse.cs" />
     <Compile Include="ViewModels\Response\FileInfosResponse.cs" />
