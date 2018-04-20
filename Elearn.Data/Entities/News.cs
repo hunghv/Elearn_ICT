@@ -22,7 +22,7 @@ namespace Elearn.Data.Entities
         public int StatusId { get; set; }
         public string Content { get; set; }
         public int PostedById { get; set; }
-        public UserProfile PostedBy { get; set; }
+
         public virtual Categories Category { get; set; }
         public virtual Status Status { get; set; }
         public virtual CoverImage Image { get; set; }

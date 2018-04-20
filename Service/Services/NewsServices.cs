@@ -79,7 +79,7 @@ namespace Service.Services
                 Category = x.Category.Name,
 
                 Description = x.Description,
-                PostedBy = x.PostedBy.DisplayName,
+                PostedBy =_context.UserProfiles.SingleOrDefault(u => u.Id==x.PostedById).DisplayName,
                 PublicDate = x.PublicDate,
                 Status = x.Status.Name,
                 PostedDate = x.CreatedDate,
@@ -114,7 +114,7 @@ namespace Service.Services
                 Category = x.Category.Name,
 
                 Description = x.Description,
-                PostedBy = x.PostedBy.DisplayName,
+                PostedBy = _context.UserProfiles.SingleOrDefault(u => u.Id == x.PostedById).DisplayName,
                 PublicDate = x.PublicDate,
                 Status = x.Status.Name,
                 PostedDate = x.CreatedDate,

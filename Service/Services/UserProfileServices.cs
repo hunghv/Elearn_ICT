@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using Elearn.Data.Entities;
 using Elearn.Data.Repository.Interfaces;
 using Service.Common;

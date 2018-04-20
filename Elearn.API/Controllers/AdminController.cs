@@ -8,6 +8,7 @@ using Service.ViewModels.Request;
 
 namespace Elearn.API.Controllers
 {
+
     [RoutePrefix("api/Admin")]
     public class AdminController : ApiController
     {
@@ -23,10 +24,11 @@ namespace Elearn.API.Controllers
         #endregion
 
         #region Categories
+        [AcceptVerbs("GET", "POST")]
 
         [Route("Categories/GetAllCategories")]
-        [HttpGet]
-        public HttpResponseMessage GetAllCategories([FromUri] CategoriesRequest request)
+        [HttpPost]
+        public HttpResponseMessage GetAllCategories(CategoriesRequest request)
         {
             try
             {
@@ -39,7 +41,7 @@ namespace Elearn.API.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, exception.Message);
             }
         }
-
+        // public HttpResponseMessage UpdateCategories(CategoriesSaveRequest request,int id,int type)
         [Route("Categories/Update")]
         [HttpPost]
         public HttpResponseMessage UpdateCategories(CategoriesSaveRequest request)
@@ -49,7 +51,7 @@ namespace Elearn.API.Controllers
                 var result = _adminServices.SaveCategories(request);
                 if (result != null)
                 {
-                    return Request.CreateResponse(HttpStatusCode.OK, result);
+                    return Request.CreateResponse(HttpStatusCode.OK, new { results = result });
                 }
                 return Request.CreateResponse(HttpStatusCode.NotModified, false);
             }
@@ -68,9 +70,9 @@ namespace Elearn.API.Controllers
                 var result = _adminServices.DeleteCategories(id);
                 if (result)
                 {
-                    return Request.CreateResponse(HttpStatusCode.OK, true);
+                    return Request.CreateResponse(HttpStatusCode.OK, new  {results = true });
                 }
-                return Request.CreateResponse(HttpStatusCode.NotModified, false);
+                return Request.CreateResponse(HttpStatusCode.NotModified, new { results = false });
             }
             catch (Exception exception)
             {
