@@ -105,6 +105,7 @@
     <Compile Include="Common\StructuremapMvc.cs" />
     <Compile Include="Common\StructuremapWebApi.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="DependencyResolution\DefaultRegistry.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />

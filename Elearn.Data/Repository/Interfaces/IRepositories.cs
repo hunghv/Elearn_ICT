@@ -16,4 +16,5 @@ namespace Elearn.Data.Repository.Interfaces
     public interface IStatusRepository : IEntityBaseRepository<Status> { }
     public interface IUserLoginHistoryRepository : IEntityBaseRepository<UserLoginHistory> { }
     public interface IUserProfileRepository : IEntityBaseRepository<UserProfile> { }
+    public interface IEmployeeRepository : IEntityBaseRepository<Employee> { }
 }

@@ -68,6 +68,7 @@
     <Compile Include="Common\ElearnContext.cs" />
     <Compile Include="Entities\Attachments.cs" />
     <Compile Include="Entities\EmailTemplate.cs" />
+    <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\NewsComment.cs" />
     <Compile Include="Entities\Categories.cs" />
     <Compile Include="Entities\Base\Entity.cs" />
@@ -97,6 +98,10 @@
     <Compile Include="Migrations\201804190645204_update194news.Designer.cs">
       <DependentUpon>201804190645204_update194news.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808060726531_CreateEmployee.cs" />
+    <Compile Include="Migrations\201808060726531_CreateEmployee.Designer.cs">
+      <DependentUpon>201808060726531_CreateEmployee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Base\EntityBaseRepository.cs" />
@@ -105,6 +110,7 @@
     <Compile Include="Repository\Implementation\CategoriesRepository.cs" />
     <Compile Include="Repository\Implementation\CountryRepository.cs" />
     <Compile Include="Repository\Implementation\CoverImagesRepository.cs" />
+    <Compile Include="Repository\Implementation\EmployeeRepository.cs" />
     <Compile Include="Repository\Implementation\LikeRepository.cs" />
     <Compile Include="Repository\Implementation\NewsCommentRepository.cs" />
     <Compile Include="Repository\Implementation\NewsRepository.cs" />
@@ -132,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804190645204_update194news.resx">
       <DependentUpon>201804190645204_update194news.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808060726531_CreateEmployee.resx">
+      <DependentUpon>201808060726531_CreateEmployee.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -21,6 +21,7 @@ namespace Elearn.Data.Common
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<UserRole> UserRole { get; set; }
         public DbSet<Attachment> Attachments { get; set; }
+        public DbSet<Employee> Employees { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -40,6 +40,7 @@ namespace Elearn.API.DependencyResolution
             For<IUserLoginHistoryRepository>().Use<UserLoginHistoryRepository>();
             For<IUserProfileRepository>().Use<UserProfileRepository>();
             For<IUserRoleRepository>().Use<UserRoleRepository>();
+            For<IEmployeeRepository>().Use<EmployeeRepository>();
         }
 
        
