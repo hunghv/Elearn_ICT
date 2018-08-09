@@ -6,5 +6,6 @@ namespace Service.Services.Interfaces
     public interface IEmployeeServices
     {
         List<Employee> GetEmployees();
+        int SaveEmployee(Employee request);
     }
 }

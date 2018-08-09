@@ -25,6 +25,8 @@ namespace Elearn.API.DependencyResolution
             //Services
             For<IAdminServices>().Use<AdminServices>();
             For<IUserProfileServices>().Use<UserProfileServices>();
+            For<IEmployeeServices>().Use<EmployeeServices>();
+            
 
             //Repository
             For<ICategoriesRepository>().Use<CategoriesRepository>();

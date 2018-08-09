@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Elearn.Data.Entities;
 using Service.Common;
 using Service.Services.Interfaces;
 using Service.ViewModels.Request;
@@ -22,7 +23,7 @@ namespace Elearn.API.Controllers
 
         #endregion
 
-        #region employees
+        #region employees int SaveEmployee(Employee request)
         [Route("Employee/GetAllemployes")]
         [HttpGet]
         public HttpResponseMessage GetAllemployes()
@@ -32,6 +33,24 @@ namespace Elearn.API.Controllers
                 var users = _employeeServices.GetEmployees();
                 return users != null ? Request.CreateResponse(HttpStatusCode.OK, users) :
                     Request.CreateResponse(HttpStatusCode.NoContent, Constants.ErrorMessageCodes.NoRecordsFoundMessage);
+            }
+            catch (Exception exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, exception.Message);
+            }
+        }
+        [Route("Employee/Update")]
+        [HttpPost]
+        public HttpResponseMessage SaveEmployee(Employee request)
+        {
+            try
+            {
+                var result = _employeeServices.SaveEmployee(request);
+                if (result != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, new { results = result });
+                }
+                return Request.CreateResponse(HttpStatusCode.NotModified, false);
             }
             catch (Exception exception)
             {
