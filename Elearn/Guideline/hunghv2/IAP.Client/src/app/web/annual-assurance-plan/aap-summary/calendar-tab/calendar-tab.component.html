@@ -1,0 +1,25 @@
+<iap-list-header-row>
+  <iap-list-header [name]="'Calendar View Results:'"></iap-list-header>
+  <iap-list-header-action>
+    <button mat-raised-button class="mat-button-petronas-ghost-small-long">EXPORT</button>
+    <button mat-raised-button class="mat-button-petronas-ghost-small-long" (click)="openFilter()">FILTER</button>
+  </iap-list-header-action>
+</iap-list-header-row>
+<hr>
+
+<iap-search-filter-result [filterMD]="filterMD" [filterFormResult]="filterFormResult" (removeFilter)="handleRemoveFilter($event)"></iap-search-filter-result>
+
+<div class="results">
+  <ng-container *ngIf="checkHasData()">
+    <div class="month-result" *ngFor="let monthData of data">
+      <iap-box class="month-content">
+        <header>
+          <h4>{{monthData.month}}</h4>
+        </header>
+        <div class="result">
+          <a [routerLink]="'/web/annual-assurance-plan/dept-aap-item-detail/' + info.id" *ngFor="let info of monthData?.info?.listCalendarMonthItem">{{info.title}}</a>
+        </div>
+      </iap-box>
+    </div>
+  </ng-container>
+</div>

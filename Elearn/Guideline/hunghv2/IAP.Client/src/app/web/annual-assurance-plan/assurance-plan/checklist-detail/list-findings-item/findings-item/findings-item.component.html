@@ -1,0 +1,18 @@
+<iap-small-card-template [color]="'findings-item'">
+  <header>
+    <iap-card-status (deleteItem)="onDelete()">{{finding.status}}</iap-card-status>
+    <iap-card-ref [name]="'Ref No'">{{finding.findingNo}}</iap-card-ref>
+    <iap-card-info [name]="'Findings Description'">{{finding.description}}</iap-card-info>
+  </header>
+  <footer>
+    <iap-card-info-row>
+      <!-- <iap-card-info [name]="'Attachment(s)'">0</iap-card-info> -->
+      <iap-card-info [name]="'Action Item(s)'">{{finding.actionItemNumber}}</iap-card-info>
+      <iap-card-info [name]="'Type of Finding'">{{finding.findingType || '-'}}</iap-card-info>
+    </iap-card-info-row>
+    <iap-card-nav-icon-row>
+        <iap-card-info [name]="'Required Action'">Create action item</iap-card-info>
+        <iap-card-nav-icon [href]="['/web/annual-assurance-plan/assurance-plan/checklist/findings/detail/',finding.id]"></iap-card-nav-icon>
+      </iap-card-nav-icon-row>
+  </footer>
+</iap-small-card-template> 

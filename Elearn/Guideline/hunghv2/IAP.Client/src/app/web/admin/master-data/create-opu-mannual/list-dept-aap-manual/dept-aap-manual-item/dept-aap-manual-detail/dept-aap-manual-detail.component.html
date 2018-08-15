@@ -1,0 +1,18 @@
+<iap-page-header>Department Annual Assurance Plan - Department A</iap-page-header>
+<iap-box class="none-shadow bottom-bordered thin page-header">
+  <iap-form-layout-template class="col-70-30">
+    <div class="main-content">
+      <div class="fx-row wrap items-2">
+        <iap-card-ref [name]="'Reference No'">{{deptAap?.referenceNumber || 'AAP/MLNG/2018/DEPTA'}}</iap-card-ref>
+        <iap-card-info [name]="'OPU'">{{deptAap?.opuName}}</iap-card-info>
+      </div>
+      <div class="fx-row wrap items-2">
+        <iap-card-info [name]="'Assurance Year'">2018</iap-card-info>
+        <iap-card-info [name]="'Department'">{{deptAap?.locationName}}</iap-card-info>
+      </div>
+      <div class="fx-row wrap items-2">
+        <iap-card-info [name]="'Assurance Line'">{{deptAap?.assuranceLine || 'First Line'}}</iap-card-info>
+      </div>
+    </div>
+  </iap-form-layout-template>
+</iap-box>

@@ -1,0 +1,42 @@
+<header>
+  <h2>List of Department Submissions:
+    <span *ngIf="isChartView">{{lstChartData?.length}} department(s)</span>
+    <span *ngIf="!isChartView">{{lstDepartmentSubmissionData?.length}} department(s)</span>
+  </h2>
+  <div class="action">
+    <p>
+      View as:
+    </p>
+    <button mat-icon-button (click)="isChartView = false" [class.active]="isChartView === false">
+      <mat-icon>event_note</mat-icon>
+    </button>
+    <button mat-icon-button (click)="isChartView = true" [class.active]="isChartView === true">
+      <mat-icon>equalizer</mat-icon>
+    </button>
+  </div>
+</header>
+
+<ng-container *ngIf="isChartView">
+  <div class="chart-filter">
+    <mat-form-field>
+      <mat-select placeholder="Select level to view">
+        <mat-option [value]="'OPU'">OPU</mat-option>
+        <mat-option [value]="'Dept'">Department</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div>
+      <iap-label>Assurance Year</iap-label>
+      <iap-info-label>{{assuranceYear}}</iap-info-label>
+    </div>
+    <button mat-raised-button class="mat-button-petronas-ghost-small" (click)="searchChart()">Apply</button>
+  </div>
+</ng-container>
+
+<ng-container class="chart-view" *ngIf="isChartView; else deptSubmission">
+  <iap-submission-summary [data]="chartData" *ngFor="let chartData of lstChartData"></iap-submission-summary>
+</ng-container>
+<ng-template #deptSubmission>
+  <div class="card-view">
+    <iap-department-submission [data]="data" *ngFor="let data of lstDepartmentSubmissionData"></iap-department-submission>
+  </div>
+</ng-template>

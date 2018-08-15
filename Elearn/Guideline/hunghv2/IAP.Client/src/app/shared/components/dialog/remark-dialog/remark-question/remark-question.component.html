@@ -1,0 +1,5 @@
+<div>
+  <p>{{data?.number}}</p>
+  <p>{{data?.name}}</p>
+</div>
+<iap-star-rating [value]="data?.rate" (rate)="handleRate($event)"></iap-star-rating>

@@ -1,0 +1,131 @@
+<iap-dialog-header>
+  <h2>CREATE DEPARTMENT AAP ITEM</h2>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</iap-dialog-header>
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <iap-form-layout-template>
+      <div class="main-content">
+        <iap-label large-text>Please complete all compulsory field(*) to create the Annual Assurance Plan</iap-label>
+        <div class="fx-row wrap items-2">
+          <iap-card-info [name]="'Reference No'">{{aapItem.referenceNo}}</iap-card-info>
+          <iap-card-info [name]="'Status'">{{aapItem.status}}</iap-card-info>
+        </div>
+        <div class="fx-row wrap items-2">
+          <iap-card-info [name]="'Assurance Year'">{{aapItem.year}}</iap-card-info>
+          <iap-card-info [name]="'Assurance Category'">Planned Assurance</iap-card-info>
+        </div>
+        <div class="fx-row wrap items-2">
+          <iap-card-info [name]="'Assurance Line'">First Line</iap-card-info>
+        </div>
+        <mat-form-field class="full-width">
+          <textarea matInput formControlName="title" placeholder="Assurance Title" required></textarea>
+          <mat-error *ngIf="form.controls.title?.hasError('required')">
+            {{message.ERROR_REQUIRED_FIELD}}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <textarea matInput formControlName="description" placeholder="Assurance Description" required></textarea>
+          <mat-error *ngIf="form.controls.description?.hasError('required')">
+            {{message.ERROR_REQUIRED_FIELD}}
+          </mat-error>
+        </mat-form-field>
+        <div class="fx-row wrap items-2">
+          <mat-form-field>
+            <mat-select formControlName="assuranceTypeId" (selectionChange)="onAssuranceTypeChange($event)" placeholder="Assurance Type" required>
+              <mat-option *ngFor="let option of aapItem.assuranceTypes" [value]="option.id">{{ option.name }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls.assuranceTypeId?.hasError('required')">
+              {{message.ERROR_REQUIRED_FIELD}}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select formControlName="locationId" placeholder="Location" required>
+              <mat-option *ngFor="let option of aapItem.locations" [value]="option.id">{{ option.name }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls.locationId?.hasError('required')">
+              {{message.ERROR_REQUIRED_FIELD}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="fx-row wrap items-2">
+          <mat-form-field>
+            <mat-select formControlName="riskAreaId" placeholder="Risk Area" (selectionChange)="onRiskAreaChange($event)" required>
+              <mat-option *ngFor="let option of aapItem.riskAreas" [value]="option.id">{{ option.name }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls.riskAreaId?.hasError('required')">
+              {{message.ERROR_REQUIRED_FIELD}}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select formControlName="checklistId" placeholder="Checklist" required>
+              <mat-option *ngFor="let option of aapItem.checklists" [value]="option.id">{{ option.title }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls.checklistId?.hasError('required')">
+              {{message.ERROR_REQUIRED_FIELD}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <iap-label x-large-text wide-margin>Assurance Frequency</iap-label>
+        <div class="fx-row wrap items-2">
+          <iap-card-info [name]="'PTS Requirement'">{{aapItem.ptsRequirement}} per {{aapItem.frequency}}</iap-card-info>
+          <iap-card-info [name]="'OPU Requirement'">{{aapItem.opuRequirement}} per {{aapItem.frequency}}</iap-card-info>
+        </div>
+        <div class="fx-row wrap items-2">
+          <mat-form-field>
+            <input matInput formControlName="numberOfPlan" placeholder="No of plans" required iapInputNumber>
+            <mat-hint>per {{aapItem.frequency}}</mat-hint>
+            <mat-error *ngIf="form.controls.numberOfPlan?.hasError('required')">
+              {{message.ERROR_REQUIRED_FIELD}}
+            </mat-error>
+            <mat-error *ngIf="form.controls.numberOfPlan?.hasError('numOfPlanValidate')">
+              {{message.ERROR_NUMBEROFPLAN_FIELD}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <iap-label x-large-text wide-margin>Planned</iap-label>
+        <div class="planned-assurance-container">
+          <div class="frequency-plan-header">
+            <div class="month-header" *ngFor="let month of months">
+              <label>{{month}}</label>
+            </div>
+          </div>
+          <div class="frequency-plan">
+            <label>Per Month</label>
+            <div class="frequency-container">
+              <div class="monthly-plan" *ngFor="let monthly of monthlyFrequency; let i = index; trackBy:trackPlanByIndex">
+                <mat-form-field>
+                  <input matInput [value]="monthly" [(ngModel)]="monthlyFrequency[i]" [ngModelOptions]="{standalone: true}" (ngModelChange)="onPlanChange($event)"
+                    iapInputNumber>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="isFrequencyYearly()" class="frequency-plan annual">
+            <label>Per Year</label>
+            <div>
+              <label [class.is-met]="isAnnualMetMinimum(annualFrequency)">{{annualFrequency}}</label>
+            </div>
+          </div>
+          <div *ngIf="!isFrequencyYearly()" class="frequency-plan quarterly">
+            <label>Per Quarter *</label>
+            <div class="frequency-container">
+              <div class="quarterly-plan" *ngFor="let quarterly of quarterlyFrequency; let i = index">
+                <label [class.is-met]="isQuarterMetMinimum(quarterly, i)">{{quarterly}}</label>
+              </div>
+            </div>
+          </div>
+          <mat-error *ngIf="numberOfPlanIsValid">
+              {{message.ERROR_NUMBEROFQUATERLYPLAN_FIELD}}
+          </mat-error>
+        </div>
+      </div>
+      <div class="action">
+        <button mat-raised-button color="primary" class="mat-button-lg" (click)="save()" [disabled]="!form.dirty">SAVE</button>
+        <button mat-raised-button class="mat-button-ghost" mat-dialog-close>CANCEL</button>
+      </div>
+    </iap-form-layout-template>
+  </form>
+</mat-dialog-content>

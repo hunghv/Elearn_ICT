@@ -1,0 +1,136 @@
+@import 'variable';
+@import 'variable.color';
+$planned-label-width: 60px;
+$planned-label-gap: 16px;
+$planned-header-label-width: 50px;
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  .detail-action {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    >button {
+      width: 80%;
+      padding: 10px 25px;
+    }
+    #edit {
+      width: 80%;
+      background-color: $color-petronas !important;
+      color: white !important;
+    }
+  }
+  >span {
+    font-size: 85%;
+    color: rgba(0, 0, 0, 0.68);
+    margin-bottom: 20px;
+  }
+}
+
+.btn-view-checklist {
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+
+.planned-assurance-container {
+  overflow-x: auto;
+  .frequency-plan-header {
+    display: flex;
+    margin-left: $planned-label-width + $planned-label-gap;
+    justify-content: space-between;
+    .month-header {
+      width: (100% / 12);
+      min-width: $planned-header-label-width;
+      label {
+        min-width: $planned-header-label-width;
+        display: block;
+        text-align: center;
+      }
+    }
+  }
+  .frequency-plan {
+    display: flex;
+    margin-bottom: 16px;
+    align-items: center;
+    >label:first-child {
+      width: $planned-label-width;
+      margin-right: $planned-label-gap;
+      flex-shrink: 0;
+    }
+    .frequency-container {
+      display: flex;
+      flex-grow: 1;
+      justify-content: space-between;
+      .monthly-plan {
+        width: (100% / 12);
+        min-width: $planned-header-label-width;
+        padding: 4px;
+        display: flex;
+        justify-content: center;
+        >label {
+          display: flex;
+          width: 100%;
+          min-width: $planned-header-label-width - 4px * 2;
+          height: $planned-header-label-width - 4px * 2;
+          justify-content: center;
+          align-items: center;
+          background: rgba(0, 0, 0, 0.1);
+          border-radius: 4px;
+          font-weight: bold;
+        }
+      }
+      .quarterly-plan {
+        width: (100% / 4);
+        min-width: $planned-header-label-width * 3;
+        height: $planned-header-label-width;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 4px;
+        >label {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 4px;
+          background: $color-negative;
+          font-weight: bold;
+          &.is-met {
+            background: $color-positive;
+          }
+        }
+      }
+    }
+    &.annual {
+      >div {
+        width: 100%;
+        min-width: $planned-header-label-width * 12;
+        height: $planned-header-label-width;
+        padding: 4px;
+        >label {
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 2px solid rgba(0, 0, 0, 0.1);
+          border-radius: 4px;
+          font-weight: bold;
+          &.is-met {
+            background: $color-positive;
+            border: none;
+          }
+          &.is-not-met {
+            background: $color-negative;
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.rich-text {
+  margin-bottom: 16px;
+}

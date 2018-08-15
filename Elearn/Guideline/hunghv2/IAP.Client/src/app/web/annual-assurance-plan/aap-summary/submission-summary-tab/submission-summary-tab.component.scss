@@ -1,0 +1,44 @@
+@import 'variable';
+:host {
+  display: block;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  >h2 {
+    >span {
+      color: rgba($color: #000000, $alpha: 0.48);
+      font-size: 0.6em;
+      font-weight: 500;
+    }
+  }
+  >.action {
+    display: flex;
+    align-items: center;
+    p {
+      color: rgba($color: #000000, $alpha: 0.48);
+    }
+    button {
+      &:first-child {
+        margin-right: 10px;
+      }
+      &.active {
+        background: $color-petronas;
+        color: white;
+      }
+    }
+  }
+}
+
+.chart-filter {
+  display: flex;
+  width: 60%;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  button {
+    align-self: flex-start;
+  }
+}

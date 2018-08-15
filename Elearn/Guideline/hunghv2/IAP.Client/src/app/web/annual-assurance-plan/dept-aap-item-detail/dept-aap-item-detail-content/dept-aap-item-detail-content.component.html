@@ -1,0 +1,18 @@
+<mat-tab-group [dynamicHeight]="true">
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <h2 class="tab-label">Detail</h2>
+    </ng-template>
+    <div class="tab-content">
+      <ng-content select=".detail-tab"></ng-content>
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <h2 class="tab-label">Workflow Tracking</h2>
+    </ng-template>
+    <div class="tab-content">
+      <ng-content select=".workflow-tab"></ng-content>
+    </div>
+  </mat-tab>
+</mat-tab-group>

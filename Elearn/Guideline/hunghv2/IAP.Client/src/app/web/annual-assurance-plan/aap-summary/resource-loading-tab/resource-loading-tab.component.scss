@@ -1,0 +1,11 @@
+@import 'variable';
+:host {
+  display: block;
+  overflow: auto;
+}
+
+.results {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px 0;
+}

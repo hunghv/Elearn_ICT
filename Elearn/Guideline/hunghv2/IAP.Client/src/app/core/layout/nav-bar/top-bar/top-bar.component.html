@@ -1,0 +1,40 @@
+<nav>
+  <div class="burger-button-container">
+    <button class="button-icon burger-button" [ngClass]="{'expand': (isSidebarExpand$ | async) === true}" (click)="toggleSideBar()">
+      <div>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </button>
+  </div>
+  <div class="petronas-logo-container">
+    <a routerLink="/web/dashboard">
+      <img src="assets/images/logo-petronas-01.png" alt="logo">
+    </a>
+  </div>
+  <div class="title">
+    <h4>
+      <strong>my</strong>
+      <em>ASSURANCE</em>
+    </h4>
+  </div>
+  <div class="action-area">
+    <div class="button-icon notification">
+      <i class="material-icons" iapToggleMenuPopup targetSelector='iap-notification-menu' animation='up'>notifications</i>
+      <iap-notification-menu tabindex="0"></iap-notification-menu>
+    </div>
+    <button class="button-icon">
+      <i class="material-icons">help</i>
+    </button>
+  </div>
+
+  <div class="profile">
+    <div>
+      <div class="center-items" iapToggleMenuPopup targetSelector='iap-profile-menu' animation='up'>
+        <span>MH</span>
+      </div>
+      <iap-profile-menu tabindex="0"></iap-profile-menu>
+    </div>
+  </div>
+</nav>

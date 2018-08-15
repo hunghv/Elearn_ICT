@@ -1,0 +1,17 @@
+<iap-small-card-template [color]="'action-item'">
+  <header>
+    <iap-card-status (deleteItem)="handleDeleteItem()"></iap-card-status>
+    <iap-card-ref [name]="'Action Item Ref No'">{{data.ref}}</iap-card-ref>
+    <iap-card-info [name]="'Action Description'">{{data.description}}</iap-card-info>
+  </header>
+  <footer>
+    <iap-card-nav-icon-row>
+      <iap-card-info [name]="'Priority'">{{data.priority}}</iap-card-info>
+      <iap-card-info [name]="'Due Date'">{{data?.dueDate | date:'dd MMM yyyy'}}</iap-card-info>
+    </iap-card-nav-icon-row>
+    <iap-card-nav-icon-row>
+      <iap-card-info [name]="'Attachment(s)'">{{data.attachmentsCount}}</iap-card-info>
+      <iap-card-nav-icon [href]="'action-item/' + data.id"></iap-card-nav-icon>
+    </iap-card-nav-icon-row>
+  </footer>
+</iap-small-card-template>

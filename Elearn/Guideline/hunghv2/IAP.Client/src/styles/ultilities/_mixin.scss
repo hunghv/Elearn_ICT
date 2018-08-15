@@ -1,0 +1,136 @@
+@import './_variable.scss';
+@import './_function.scss';
+@mixin elipsisText() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin multiLineElipsisText($line-height, $max-line) {
+  line-height: $line-height;
+  max-height: $line-height * $max-line;
+  height: $line-height * $max-line;
+  overflow: hidden;
+  -webkit-line-clamp: $max-line;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+@mixin multiLineBreakText($line-height, $max-line) {
+  line-height: $line-height;
+  max-height: $line-height * $max-line;
+  height: $line-height * $max-line;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+@mixin mediaScreenSmaller($breakpoint) {
+  @media only screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin mediaScreenLarger($breakpoint) {
+  @media only screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin mediaScreenBetween($lower-breakpoint, $upper-breakpoint) {
+  @media only screen and (min-width: $lower-breakpoint) and (max-width: $upper-breakpoint) {
+    @content;
+  }
+}
+
+@mixin mediaExtraSmallScreen {
+  @media only screen and (max-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin mediaSmallScreen {
+  @media only screen and (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin mediaLargeScreen {
+  @media only screen and (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin mediaExtraLargeScreen {
+  @media only screen and (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin mediaIEOnly {
+  @media only screen and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
+}
+
+@mixin mediaFirefoxOnly {
+  @supports (-moz-appearance: none) {
+    @content;
+  }
+}
+
+@mixin responsive($min-width: null, $max-width: null) {
+  @if type-of($min-width)==string {
+    @if $min-width==xs {
+      @include mediaExtraSmallScreen {
+        @content;
+      }
+    }
+    @else if $min-width==sm {
+      @include mediaSmallScreen {
+        @content;
+      }
+    }
+    @else if $min-width==lg {
+      @include mediaLargeScreen {
+        @content;
+      }
+    }
+    @else if $min-width==xl {
+      @include mediaExtraLargeScreen {
+        @content;
+      }
+    }
+  }
+  @else {
+    @if $min-width !=null {
+      @if $max-width !=null {
+        @if isValidSize($min-width) and isValidSize($max-width) and comparable($min-width, $max-width) {
+          @if $min-width>$max-width {
+            @include mediaScreenBetween($max-width, $min-width) {
+              @content;
+            }
+          }
+          @else {
+            @include mediaScreenBetween($min-width, $max-width) {
+              @content;
+            }
+          }
+        }
+      }
+      @else {
+        @if isValidSize($min-width) {
+          @include mediaScreenLarger($min-width) {
+            @content;
+          }
+        }
+      }
+    }
+    @else {
+      @if $max-width !=null and isValidSize($max-width) {
+        @include mediaScreenSmaller($max-width) {
+          @content;
+        }
+      }
+    }
+  }
+}

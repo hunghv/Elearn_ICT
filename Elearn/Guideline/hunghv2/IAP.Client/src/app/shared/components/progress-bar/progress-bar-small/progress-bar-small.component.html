@@ -1,0 +1,4 @@
+<!-- <iap-label>Tap to view assurance progress detail ></iap-label> -->
+<button mat-button (click)="openProgressDetail()">Tap to view assurance progress detail &gt;</button>
+<iap-progress-bar-small-step *ngFor="let step of data.listStep" [data]="step" (selectedStepChange)="onSelectedStepChanged($event)"
+  [class.expand]="step.stepIndex === selectedStep"></iap-progress-bar-small-step>

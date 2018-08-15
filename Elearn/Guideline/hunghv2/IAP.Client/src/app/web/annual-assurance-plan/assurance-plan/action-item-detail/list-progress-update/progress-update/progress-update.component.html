@@ -1,0 +1,16 @@
+<iap-small-card-template [color]="'action-item'">
+  <header>
+    <iap-card-status (deleteItem)="onDelete()" [time]="actionItemProgress?.insertedAt | date: 'HH:mm, dd MMM yyyy'"></iap-card-status>
+    <iap-card-info-row>
+      <iap-card-info [name]="'Completion status'">{{actionItemProgress?.completionStatus}}</iap-card-info>
+      <iap-card-info [name]="'Completion %'"> {{actionItemProgress?.completionPercentage}} %</iap-card-info>
+    </iap-card-info-row>
+    <iap-card-info [name]="'Remark'">{{actionItemProgress?.remark}}</iap-card-info>
+  </header>
+  <footer>
+    <iap-card-nav-icon-row>
+      <iap-card-info [name]="'Attachments'">{{actionItemProgress?.attachmentsCount}}</iap-card-info>
+      <iap-card-nav-icon (click)="openDetailDialog()"></iap-card-nav-icon>
+    </iap-card-nav-icon-row>
+  </footer>
+</iap-small-card-template>

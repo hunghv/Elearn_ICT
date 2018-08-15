@@ -1,0 +1,11 @@
+@import 'variable';
+.header{
+  display: flex;
+   justify-content: space-between;
+   padding: 20px 0px;
+   .title{
+    font-size: 150%;
+    color: $color-petronas;
+    font-weight: 600;
+  }
+}

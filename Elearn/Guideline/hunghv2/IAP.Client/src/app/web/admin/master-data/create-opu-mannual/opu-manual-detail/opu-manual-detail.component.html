@@ -1,0 +1,25 @@
+<iap-page-header>
+    Manage Annual Planning Creation Detail
+  </iap-page-header>
+  <iap-box class="none-shadow bottom-bordered thin page-header">
+    <iap-form-layout-template>
+      <div class="main-content">
+        <div class="fx-row wrap items-2">
+          <iap-card-info [name]="'Assurance Year'">{{opu?.year}}</iap-card-info>
+          <iap-card-info [name]="'Reference No'">{{opu?.referenceNo || 'AAP/Upstream Legal /2018'}}</iap-card-info>
+        </div>
+        <div class="fx-row wrap items-2">
+            <iap-card-info [name]="'Assurance Line'">{{opu?.assuranceLineName || 'First Line'}}</iap-card-info>
+          <iap-card-info [name]="'Creation Source'">Manual</iap-card-info>
+        </div>
+        <div class="fx-row wrap items-2">
+            <iap-card-info [name]="'OPU'">{{opu?.opuName}}</iap-card-info>
+            <iap-card-info [name]="'Creation Date'">{{opu?.insertedAt || '03-06-2018'}}</iap-card-info>
+        </div>
+      </div>
+    </iap-form-layout-template>
+  </iap-box>
+  <!-- <iap-list-dept-aap [enterpriseId]="opu?.enterpriseId" [opuId]="opu?.id" [isAdmin]="isAdmin" [lstDeptAAP] ="opu?.deptAAPs"></iap-list-dept-aap>   -->
+  <iap-list-dept-aap-manual [enterpriseId]="opu?.enterpriseId" [opuId]="opu?.id" [isAdmin]="isAdmin" [lstDeptAAP] ="opu?.deptAAPs"></iap-list-dept-aap-manual>
+  
+  

@@ -1,0 +1,25 @@
+<iap-dialog-header>
+  <h2>CREATE NEW USER ROLE</h2>
+  <button mat-icon-button class="close-button" mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</iap-dialog-header>
+
+<mat-dialog-content>
+    <div class="dialog-container">
+      <div class="user-role-info">
+        <div class="user-role-field">
+          <mat-form-field>
+            <input matInput placeholder="Role Name">
+          </mat-form-field>
+          <mat-form-field>
+              <input matInput placeholder="Description">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="action">
+        <button mat-raised-button color="primary" class="mat-button-lg">SAVE</button>
+        <button mat-raised-button class="mat-button-lg mat-button-ghost mat-button-border primary" mat-dialog-close>CANCEL</button>
+      </div>
+    </div>
+  </mat-dialog-content>

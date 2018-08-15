@@ -1,0 +1,19 @@
+@import 'mixin';
+
+.tab-label {
+    font-weight: bold !important;
+    font-size: 1.5em !important;
+}
+
+.tab-content {
+    padding: 16px 1px;
+}
+mat-tab-group{
+    margin-bottom: 20px;
+    @include mediaSmallScreen {
+      text-align: center;
+    }
+    @include mediaExtraSmallScreen {
+      text-align: center;
+    }
+}

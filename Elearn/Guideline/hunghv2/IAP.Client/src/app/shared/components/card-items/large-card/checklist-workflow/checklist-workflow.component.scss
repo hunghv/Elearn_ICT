@@ -1,0 +1,12 @@
+@import 'mixin';
+@import 'variable';
+@import 'variable.color';
+
+:host {
+    display: block;
+}
+
+.container {
+    transition: height 0.3s ease-in-out;
+    overflow: hidden;
+}

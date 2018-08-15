@@ -1,0 +1,12 @@
+<div class="header col-md-12">
+  <div class="title"> List of Checklist Item For Lead Assessor and Report Approver For First Line MS
+  </div>
+</div>
+
+<iap-box class="left-bordered violet">
+        <iap-checklist-workflow-header [firstLineMsLeadAccessorReportApprover]="firstLineMsLeadAccessorReportApproverItem" (expand)="handleExpand()" (collapse)="handleCollapse()"></iap-checklist-workflow-header>
+        <div class="container" #body>
+          <hr>
+          <iap-checklist-findings-view-item [findingItem]="item" *ngFor="let item of firstLineMsLeadAccessorReportApproverItem.listFindings"></iap-checklist-findings-view-item>
+        </div>
+</iap-box>

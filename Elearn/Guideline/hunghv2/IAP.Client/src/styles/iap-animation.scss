@@ -1,0 +1,36 @@
+$time-duration: 0.2s;
+.iap-animation-up {
+  animation: iap-animation-up $time-duration ease-in-out forwards;
+}
+
+@keyframes iap-animation-up {
+  0% {
+    opacity: 0;
+    transform: translateY(1.5%);
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.iap-animation-down {
+    animation: iap-animation-down $time-duration ease-in-out forwards;
+  }
+  
+  @keyframes iap-animation-down {
+    0% {
+      opacity: 0;
+      transform: translateY(-1.5%);
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }

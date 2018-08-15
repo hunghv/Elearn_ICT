@@ -1,0 +1,10 @@
+<iap-dialog-header>
+  <h2>Filter by:</h2>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</iap-dialog-header>
+<hr>
+<mat-dialog-content>
+  <iap-search-filter [filterMD]="data?.filterMD" (filterApply)="handleFilterApply($event)"></iap-search-filter>
+</mat-dialog-content>

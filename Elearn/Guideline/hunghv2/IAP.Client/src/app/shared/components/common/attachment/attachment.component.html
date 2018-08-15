@@ -1,0 +1,68 @@
+<h2>Attachment:</h2>
+<mat-radio-group [(ngModel)]="attachmentType">
+  <mat-radio-button value="document" [checked]="true" color="primary">Document</mat-radio-button>
+  <mat-radio-button value="link" color="primary">Link to Document</mat-radio-button>
+</mat-radio-group>
+
+<div [class.hidden]="attachmentType === 'link'">
+  <form [formGroup]="documentForm">
+    <mat-form-field>
+      <input matInput placeholder="Document Name" required formControlName="documentName">
+      <mat-error *ngIf="documentName.hasError('required') && documentName.dirty">
+        {{message.ERROR_REQUIRED_FIELD}}
+      </mat-error>
+    </mat-form-field>
+    <div class="doc-type-container">
+      <mat-form-field>
+        <mat-select placeholder="Document Type" required formControlName="documentType">
+          <mat-option [value]="'TOR'">TOR</mat-option>
+          <mat-option [value]="'Other'">Other</mat-option>
+        </mat-select>
+        <mat-error *ngIf="documentType.hasError('required') && documentType.dirty">
+          {{message.ERROR_REQUIRED_FIELD}}
+        </mat-error>
+      </mat-form-field>
+      <div class="upload-container">
+        <span>Select file to upload</span>
+        <button mat-raised-button class="mat-button-petronas-ghost-small" id="browse" (click)="openFileDialog()">Browse</button>
+        <form hidden>
+            <input #file type="file" hidden (change)="handleInputFileChange($event)" accept=".pdf,.doc,.docx,.xls,.xlsx">
+        </form>
+      </div>
+    </div>
+  </form>
+</div>
+<div [class.hidden]="attachmentType === 'document'">
+  <form [formGroup]="linkForm">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Document Name" required formControlName="linkName">
+      <mat-error *ngIf="linkName.hasError('required') && linkName.dirty">
+        {{message.ERROR_REQUIRED_FIELD}}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-select placeholder="Document Type" required formControlName="linkType">
+        <mat-option [value]="'TOR'">TOR</mat-option>
+        <mat-option [value]="'Other'">Other</mat-option>
+      </mat-select>
+      <mat-error *ngIf="linkType.hasError('required') && linkType.dirty">
+        {{message.ERROR_REQUIRED_FIELD}}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Document URL" required formControlName="linkUrl">
+      <mat-hint>{{message.MESSAGE_HINT_VALID_URL}}</mat-hint>
+      <mat-error *ngIf="linkUrl.hasError('required') && linkUrl.dirty">
+        {{message.ERROR_REQUIRED_FIELD}}
+      </mat-error>
+      <mat-error *ngIf="linkUrl.hasError('pattern') && linkUrl.dirty">
+        {{message.ERROR_VALID_URL}}
+      </mat-error>
+    </mat-form-field>
+    <div class="action">
+      <button mat-raised-button class="mat-button-petronas-ghost-small" (click)="saveLink()">Save</button>
+    </div>
+  </form>
+</div>
+<iap-label>Attachments ({{listAttachment?.length}})</iap-label>
+<iap-attachment-item *ngFor="let attachment of listAttachment" [data]="attachment" (delete)="handleDeleteAttachment($event)"></iap-attachment-item>

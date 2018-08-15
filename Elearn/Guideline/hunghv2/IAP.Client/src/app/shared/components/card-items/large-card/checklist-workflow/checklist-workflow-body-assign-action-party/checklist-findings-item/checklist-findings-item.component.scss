@@ -1,0 +1,22 @@
+.findings-items {
+    display: flex;
+    .findings {
+      flex-basis: 25%;
+      padding-right: 16px;
+    }
+    .action-items {
+      flex-grow: 1;
+      .action-row {
+        margin-bottom: 16px;
+        display: flex;
+        .link {
+          flex-basis: 40%;
+          padding-right: 16px;
+        }
+        .assign {
+          flex-grow: 1;
+        }
+      }
+    }
+  }
+  

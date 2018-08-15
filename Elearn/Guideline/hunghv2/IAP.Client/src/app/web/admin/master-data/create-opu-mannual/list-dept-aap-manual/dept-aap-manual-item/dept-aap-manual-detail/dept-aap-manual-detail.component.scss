@@ -1,0 +1,21 @@
+@import 'mixin';
+.action {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .top {
+    display: flex;
+    flex-direction: column;
+    .info {
+      text-align: center;
+      margin-top: 16px;
+      @include responsive(xs) {
+        margin-bottom: 16px;
+      }
+    }
+  }
+  .bottom {
+    display: flex;
+    flex-direction: column;
+  }
+}

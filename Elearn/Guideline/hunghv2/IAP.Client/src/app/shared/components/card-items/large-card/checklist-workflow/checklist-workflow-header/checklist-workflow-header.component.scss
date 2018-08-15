@@ -1,0 +1,82 @@
+@import 'variable.color';
+@import 'mixin';
+$icon-button-width: 40px;
+:host {
+  display: flex;
+}
+
+.description,
+.info,
+.status {
+  flex-basis: calc((100% - #{$icon-button-width}) / 3);
+}
+
+.action {
+  flex-basis: $icon-button-width;
+  margin-left: auto;
+}
+
+.comply-status {
+    margin: 0;
+  &.positive {
+    color: $color-positive;
+  }
+  &.negative {
+    color: $color-negative;
+  }
+}
+
+.rating {
+  color: $color-positive;
+  margin-bottom: 16px;
+}
+
+.description {
+  overflow: hidden;
+  .section {
+    display: flex;
+    padding-right: 16px;
+    margin-bottom: 8px;
+    span {
+      &.number {
+        display: inline-block;
+        flex-basis: 10%;
+        flex-shrink: 0;
+        min-width: 30px;
+      }
+      &.content {
+        flex-grow: 1;
+        @include elipsisText;
+      }
+    }
+    &:first-child {
+      font-weight: bold;
+    }
+  }
+  .question {
+    display: flex;
+    margin-bottom: 8px;
+    padding-right: 16px;
+    .number {
+        margin-left: 10%;
+        margin-right: 16px;
+    }
+    .content {
+        @include multiLineElipsisText(1.2em, 2);
+    }
+  }
+  .question-ms {
+    display: flex;
+    height: 1em;
+    margin-bottom: 8px;
+    padding-right: 16px;
+    .number {
+        margin-left: 10%;
+        margin-right: 16px;
+    }
+    .content {
+        @include multiLineElipsisText(1.2em, 2);
+    }
+  }
+
+}

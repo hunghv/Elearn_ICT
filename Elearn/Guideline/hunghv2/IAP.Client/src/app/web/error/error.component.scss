@@ -1,0 +1,38 @@
+@import 'variable';
+:host {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.error-container {
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  text-align: center;
+}
+
+.error-icon {
+  display: flex;
+  font-size: 100px;
+  color: $color-petronas;
+  >span {
+    font-weight: bold;
+  }
+}
+
+mat-icon {
+  font-size: 105px;
+  height: 100px;
+  width: 100px;
+}
+
+.content {
+  text-align: center;
+  width: 480px;
+}

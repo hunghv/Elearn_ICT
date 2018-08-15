@@ -1,0 +1,29 @@
+@import 'variable';
+@import 'mixin';
+$gap: 2%;
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  > ::ng-deep {
+    * {
+      flex-basis: calc((100% - #{$gap * 2})/3);
+      &:not(:nth-child(3n + 3)) {
+        margin-right: $gap;
+      }
+      @include mediaSmallScreen {
+        flex-basis: calc((100% - #{$gap})/2);
+        margin-right: 0;
+        &:not(:nth-child(3n + 3)) {
+          margin-right: 0;
+        }
+        &:not(:nth-child(2n + 2)) {
+          margin-right: $gap;
+        }
+      }
+      @include mediaExtraSmallScreen {
+        flex-basis: 100%;
+        margin-right: 0 !important;
+      }
+    }
+  }
+}

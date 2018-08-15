@@ -1,0 +1,89 @@
+<iap-breadscrumb></iap-breadscrumb>
+<iap-page-header>
+  Checklist Detail
+</iap-page-header>
+<iap-box class="normal-border row">
+  <div class="col-md-10 col-xs-12 col-sm-9">
+    <div *ngFor="let section of checklistItem?.listSection">
+      <div class="group">
+        <span class="multiple-level">{{section?.refNo}}</span>
+        <span class="info bold">
+          {{section?.description}}
+        </span>
+      </div>
+    </div>
+    <form [formGroup]="fcForm" *ngIf="isFC">
+      <div class="group">
+        <span class="multiple-level"></span>
+        <span class="info">
+          {{checklistItem?.question}}
+        </span>
+      </div>
+      <div class="select-box">
+        <iap-label wide-margin required>Compliance</iap-label>
+        <mat-radio-group placeholder="Compliance" formControlName="compliance" class="col-md-6 col-sm-12">
+          <mat-radio-button color="primary" value="Yes">Yes</mat-radio-button>
+          <mat-radio-button color="warn" value="No">No</mat-radio-button>
+          <mat-radio-button value="Not Available">N/A</mat-radio-button>
+        </mat-radio-group>
+        <mat-error *ngIf="fcForm.controls.compliance.hasError('required')">
+          {{message.ERROR_REQUIRED_FIELD}}
+        </mat-error>
+      </div>
+      <hr>
+      <div class="footer row">
+        <mat-form-field class="example-full-width">
+          <textarea formControlName="remarks" matInput matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" placeholder="Remarks"></textarea>
+        </mat-form-field>
+      </div>
+    </form>
+
+    <form [formGroup]="msForm" *ngIf="!isFC">
+      <div class="select-box">
+        <iap-label wide-margin>Overall Assessment Rating</iap-label>
+        <mat-radio-group placeholder="Overall Assessment Rating" formControlName="overallAssessmentRating" class="col-md-12 col-sm-12">
+          <mat-radio-button color="primary" value="Effective">Effective</mat-radio-button>
+          <mat-radio-button color="warn" value="Some Improvement Needed">Some Improvement Needed</mat-radio-button>
+          <mat-radio-button value="Major Improvement Needed">Major Improvement Needed</mat-radio-button>
+        </mat-radio-group>
+        <mat-error *ngIf="msForm.controls.overallAssessmentRating.hasError('required')">
+          {{message.ERROR_REQUIRED_FIELD}}
+        </mat-error>
+      </div>
+
+      <hr>
+      <div class="group">
+        <span class="multiple-level"></span>
+        <span class="info bold">
+          {{checklistItem?.section}}
+        </span>
+      </div>
+      <div class="section-detail">
+        <iap-info-label normal-text>{{checklistItem?.question}}</iap-info-label>
+        <div class="level">
+          <iap-label wide-margin>Level</iap-label>
+          <mat-radio-group placeholder="Level" formControlName="level">
+            <mat-radio-button color="primary" value="Level 1">Level 1</mat-radio-button>
+            <mat-radio-button color="primary" value="Level 2">Level 2</mat-radio-button>
+            <mat-radio-button color="primary" value="Level 3">Level 3</mat-radio-button>
+            <mat-radio-button color="primary" value="Level 4">Level 4</mat-radio-button>
+          </mat-radio-group>
+          <mat-error *ngIf="msForm.controls.level.hasError('required')">
+              {{message.ERROR_REQUIRED_FIELD}}
+            </mat-error>
+        </div>
+        <div class="fc-performance">
+          <iap-label>FC Performance</iap-label>
+          <iap-info-label>Good</iap-info-label>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-2 col-xs-12 col-sm-2 action">
+    <button mat-raised-button color="primary" (click)="onSave()">SAVE</button>
+    <button mat-raised-button class="mat-button-petronas-ghost" (click)="location.back()">CANCEL</button>
+  </div>
+</iap-box>
+
+<iap-list-findings-item *ngIf="((isFC == true && fcForm && fcForm.value.compliance == 'No') || (isFC == false && msForm != null))"
+  [parentFindingType]='parentFindingType' [parentId]="checklistId"></iap-list-findings-item>

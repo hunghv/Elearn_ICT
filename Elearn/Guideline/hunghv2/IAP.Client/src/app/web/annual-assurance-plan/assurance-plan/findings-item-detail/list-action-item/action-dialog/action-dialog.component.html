@@ -1,0 +1,89 @@
+<iap-dialog-header>
+  <h2>ADD ACTION ITEM</h2>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</iap-dialog-header>
+<mat-dialog-content>
+  <form [formGroup]="actionForm">
+    <div class="dialog-container">
+      <div class="findings-info">
+        <div class="fx-row">
+          <mat-form-field class="full-width">
+            <textarea matInput required formControlName="description" placeholder="Action Description" matTextareaAutosize matAutosizeMinRows="3"
+              matAutosizeMaxRows="5"></textarea>
+            <mat-error *ngIf="description.hasError('required')">
+              {{message.ERROR_REQUIRED_FIELD}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="fx-row wrap items-2">
+          <mat-form-field>
+            <mat-select formControlName="priority" placeholder="Priority" required (dataChange)="priorityData = $event" iapDropdownLoader
+              [url]="mdUrl.PRIORITY">
+              <mat-option *ngFor="let priority of priorityData" [value]="priority.id">{{priority.name}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="priority.hasError('required')">
+              {{message.ERROR_REQUIRED_FIELD}}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput formControlName="dueDate" [matDatepicker]="picker" placeholder="Due Date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="dueDate.hasError('required')">
+              {{message.ERROR_REQUIRED_FIELD}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="fx-row wrap items-2">
+          <mat-form-field>
+            <mat-select formControlName="completionStatus" (change)="onCompletionStatusChange($event)" placeholder="Action Completion Status"
+              required>
+              <mat-option [value]="'Open'">Open</mat-option>
+              <mat-option [value]="'Completed'">Completed</mat-option>
+            </mat-select>
+            <mat-error *ngIf="completionStatus.hasError('required')">
+              {{message.ERROR_REQUIRED_FIELD}}
+            </mat-error>
+          </mat-form-field>
+          <div>
+            <iap-label>Completion Date</iap-label>
+            <iap-info-label>{{completionDate}}</iap-info-label>
+          </div>
+        </div>
+        <div class="fx-row wrap items-2">
+          <div class="col-md-6">
+            <iap-label>Action Party</iap-label>
+            <iap-people-picker [getForId]="actionPartyId" defaultRole="ActionParty" #ppActionParty isRequire=true placeholder="Action Party Name"
+              (selectedUserChange)="handleSelectedUser($event)"></iap-people-picker>
+          </div>
+          <div class="col-md-6">
+            <iap-label>Action Verifier</iap-label>
+            <iap-people-picker [getForId]="actionVerifierId" defaultRole="ActionItemVerifier" #ppActionVerifier isRequire=true
+              placeholder="Action Verifier Name" (selectedUserChange)="handleSelectedUser($event)"></iap-people-picker>
+          </div>
+        </div>
+        <ng-container *ngIf="false">
+          <div class="fx-row wrap items-2">
+            <div>
+              <iap-label required>Action Party</iap-label>
+              <button mat-raised-button class="mat-button-petronas-ghost-small">
+                + ASSIGN
+              </button>
+            </div>
+            <div>
+              <iap-label>Action Party Verifier</iap-label>
+              <iap-info-label>&lt;System Autopopulate&gt;</iap-info-label>
+            </div>
+          </div>
+        </ng-container>
+        <iap-attachment (afterUpload)="handleAfterUpload($event)" (afterDelete)="handleAfterDelete($event)" [listAttachmentId]="listAttachmentId"></iap-attachment>
+      </div>
+      <div class="action">
+        <button (click)="onSubmit()" mat-raised-button color="primary" class="mat-button-lg">SAVE</button>
+        <button mat-raised-button class="mat-button-lg mat-button-ghost mat-button-border primary" mat-dialog-close>CANCEL</button>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>

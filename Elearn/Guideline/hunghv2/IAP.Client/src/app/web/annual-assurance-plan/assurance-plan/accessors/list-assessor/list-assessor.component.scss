@@ -1,0 +1,15 @@
+@import 'variable';
+@import 'variable.color';
+header {
+  display: flex;
+  align-items: center;
+  h2 {
+    color: $color-label-content;
+    margin: 0;
+    margin-right: 24px;
+    span {
+      font-size: 0.6em;
+      color: $color-label-header;
+    }
+  }
+}

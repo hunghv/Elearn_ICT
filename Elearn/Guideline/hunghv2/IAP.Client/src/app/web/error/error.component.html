@@ -1,0 +1,18 @@
+<div class="error-container center-items">
+  <header>
+    <h4>Error: {{title}}</h4>
+    <div class="error-icon">
+      <span>{{firstCode}}</span>
+      <span>
+        <mat-icon>{{icon}}</mat-icon>
+      </span>
+      <span>{{lastCode}}</span>
+    </div>
+  </header>
+  <div class="content">
+    <p>{{message}}</p>
+    <p>
+      <a [routerLink]="['/web/dashboard']">Go to Dashboard</a>
+    </p>
+  </div>
+</div>

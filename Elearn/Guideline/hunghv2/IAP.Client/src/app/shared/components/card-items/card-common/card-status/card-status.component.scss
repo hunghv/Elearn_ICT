@@ -1,0 +1,45 @@
+@import 'variable';
+@import 'variable.color';
+@import 'mixin';
+:host {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  >iap-label {
+    margin: 0;
+    flex-basis: 50%;
+    flex-shrink: 0;
+  }
+  >div {
+    position: relative;
+    display: flex;
+    align-items: center;
+    >span {
+      font-weight: bold;
+      color: $color-positive;
+      text-transform: uppercase;
+      @include multiLineElipsisText(1em, 2);
+      height: auto;
+    }
+    >div {
+      position: relative;
+      bottom: 2px;
+      margin-left: 8px;
+      >button {
+        color: rgba($color: #000000, $alpha: 0.48);
+      }
+      .action {
+        position: absolute;
+        top: 40px;
+        right: 0px;
+        background: rgba(0, 0, 0, 0.12);
+        ul {
+          margin: 0;
+          padding: 0;
+          list-style-type: none;
+        }
+      }
+    }
+  }
+}

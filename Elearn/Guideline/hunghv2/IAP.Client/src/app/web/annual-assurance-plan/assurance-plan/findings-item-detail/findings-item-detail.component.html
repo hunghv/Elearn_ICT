@@ -1,0 +1,89 @@
+<iap-breadscrumb>
+</iap-breadscrumb>
+<iap-page-header>Findings Detail</iap-page-header>
+<form [formGroup]="form">
+  <iap-box class="none-shadow">
+    <div class="findings-detail">
+      <iap-card-ref [name]="'Ref No'">{{findingDetail?.findingNo}}</iap-card-ref>
+      <ng-container *ngIf="parentType === parentFindingType.FcCheckList">
+        <mat-form-field class="full-width">
+          <textarea matInput formControlName="description" placeholder="Findings Description" matTextareaAutosize matAutosizeMinRows="3"
+            matAutosizeMaxRows="5" required></textarea>
+        </mat-form-field>
+        <iap-card-info [name]="'Findings Status'">{{findingDetail?.status}}</iap-card-info>
+      </ng-container>
+      <ng-container *ngIf="parentType !== parentFindingType.FcCheckList">
+        <iap-label wide-margin>Type of finding:</iap-label>
+        <mat-radio-group class="type-finding fx-row wrap items-3" formControlName="findingType" [(ngModel)]="typeOfFinding">
+          <mat-radio-button value="gap" color="primary">GAP</mat-radio-button>
+          <mat-radio-button value="good-observation" color="primary">Good Observation</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field class="half-width" *ngIf="typeOfFinding === 'gap'">
+          <mat-select placeholder="Classification" formControlName="classification">
+            <mat-option [value]="'High'">High</mat-option>
+            <mat-option [value]="'Medium'">Medium</mat-option>
+            <mat-option [value]="'Low'">Low</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <textarea matInput formControlName="description" placeholder="Findings Description" matTextareaAutosize matAutosizeMinRows="3"
+            matAutosizeMaxRows="5" required></textarea>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Recommendation" formControlName="recommendation" matTextareaAutosize matAutosizeMinRows="3"
+            matAutosizeMaxRows="5"></textarea>
+        </mat-form-field>
+        <mat-form-field class="half-width">
+          <mat-select placeholder="Share to other location" (dataChange)="shareToLocationData = $event" iapDropdownLoader [url]="mdConstants.SHARE_TO_LOCATION"
+            formControlName="shareToOtherLocation">
+            <mat-option *ngFor="let data of shareToLocationData?.items" [value]="data.id">{{data.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <iap-card-info [name]="'Findings Status'">{{findingDetail?.status}}</iap-card-info>
+        <ng-container *ngIf="parentType == parentFindingType.AssurancePlan">
+          <mat-form-field class="half-width">
+            <mat-select placeholder="Risk Area" (selectionChange)="onRiskAreaChangeChange($event)" (dataChange)="riskAreaData = $event"
+              iapDropdownLoader [url]="mdConstants.RISK_AREA" formControlName="riskAreaId">
+              <mat-option *ngFor="let data of riskAreaData" [value]="data.id">{{data.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="half-width">
+            <mat-select placeholder="Check List" (selectionChange)="onCheckListChange($event)" (dataChange)="checklistData = $event"
+              iapDropdownLoader [url]="mdConstants.CHECK_LIST + riskAreaId" formControlName="mdmscId">
+              <mat-option *ngFor="let data of checklistData" [value]="data.id">{{data.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="half-width">
+            <mat-select placeholder="Element" (selectionChange)="onElementChange($event)" (dataChange)="elementData = $event" iapDropdownLoader
+              [url]="mdConstants.ELEMENT + chkListId" formControlName="mdmscElementId">
+              <mat-option *ngFor="let data of elementData" [value]="data.id">{{data.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="half-width">
+            <mat-select placeholder="Sub-Element" (dataChange)="subElementData = $event" iapDropdownLoader [url]="mdConstants.SUB_ELEMENT + elementId"
+              formControlName="mdmscSubElementId">
+              <mat-option *ngFor="let data of subElementData" [value]="data.id">{{data.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </ng-container>
+        <iap-card-info-row>
+          <iap-card-info [name]="'CAP Reviewer'">{{findingDetail?.capReviewer}}</iap-card-info>
+          <iap-card-info [name]="'CAP Approver'">{{findingDetail?.capApprover}}</iap-card-info>
+        </iap-card-info-row>
+      </ng-container>
+
+      <iap-card-info-row>
+        <iap-card-info [name]="'Findings Submitted By'">{{findingDetail?.findingSubmittedBy}}</iap-card-info>
+        <iap-card-info [name]="'Findings Submission Date'">{{findingDetail?.findingSubmittedDate}}</iap-card-info>
+      </iap-card-info-row>
+
+      <iap-attachment (beforeUpload)="handleBeforeUpload($event)" (afterUpload)="handleAfterUpload($event)" (afterDelete)="handleAfterDelete($event)" [listAttachmentId]="listAttachmentId"></iap-attachment>
+
+    </div>
+    <div class="action">
+      <button mat-raised-button color="primary" class="mat-button-lg" (click)="onSubmit()">SAVE</button>
+      <button mat-raised-button class="mat-button-petronas-ghost" (click)="location.back()">CANCEL</button>
+    </div>
+  </iap-box>
+</form>
+<iap-list-action-item></iap-list-action-item>

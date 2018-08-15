@@ -1,0 +1,68 @@
+<iap-page-header *ngIf="!isEdit">Create Assurance Provider</iap-page-header>
+<iap-page-header *ngIf="isEdit">Edit Assurance Provider</iap-page-header>
+<iap-box class="none-shadow">
+  <form [formGroup]="form">
+    <iap-form-layout-template>
+      <div class="main-content">
+        <div class="fx-row wrap items-2">
+          <iap-card-info [name]="'Reference No'">{{assuranceProviderItem.ref}}</iap-card-info>
+          <iap-card-info [name]="'AP Head'">{{apHeadAndFocalPerson.apHeadPersonName}}</iap-card-info>
+        </div>
+        <div class="fx-row wrap items-2">
+          <iap-card-info [name]="'AP Focal Person'">{{apHeadAndFocalPerson.apFocalPersonName}}</iap-card-info>
+        </div>
+        <div class="fx-row wrap items-2">
+          <mat-form-field>            
+            <mat-select formControlName="assuranceProviderId" placeholder="Assurance Provider" (selectionChange)="onAssuranceProviderChange($event)">
+                <mat-option *ngFor="let assProvider of lstMDAuditor" value={{assProvider.id}}>{{assProvider.name}}</mat-option>
+              </mat-select>
+            <mat-error *ngIf="assuranceProviderId.hasError('required')">
+              {{message.ERROR_REQUIRED_FIELD}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="richtext">
+          <iap-label required>Scope</iap-label>
+          <ckeditor formControlName="scope"></ckeditor>
+          <mat-error *ngIf="scope.hasError('required') && scope.dirty">
+            {{message.ERROR_REQUIRED_FIELD}}
+          </mat-error>
+        </div>
+        <div class="fx-row">
+          <mat-form-field class="full-width">
+            <textarea formControlName="evidencePrior" matInput matTextareaAutosize matAutosizeMinRows="3" matAutosizeMaxRows="5"
+              placeholder="Evidence Required Prior To Assurance"></textarea>
+            <mat-error *ngIf="evidencePrior.hasError('required')">
+              {{message.ERROR_REQUIRED_FIELD}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="fx-row">
+          <mat-form-field class="full-width">
+            <textarea formControlName="evidenceDuring" matInput matTextareaAutosize matAutosizeMinRows="3" matAutosizeMaxRows="5"
+              placeholder="Evidence Required During Assurance"></textarea>
+            <mat-error *ngIf="evidenceDuring.hasError('required')">
+              {{message.ERROR_REQUIRED_FIELD}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="fx-row">
+          <mat-form-field class="full-width">
+            <textarea formControlName="expenses" matInput matTextareaAutosize matAutosizeMinRows="3" matAutosizeMaxRows="5"
+              placeholder="Assurance Expenses"></textarea>
+            <mat-error *ngIf="expenses.hasError('required')">
+              {{message.ERROR_REQUIRED_FIELD}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <iap-attachment (afterUpload)="handleAfterUpload($event)" (afterDelete)="handleAfterDelete($event)" [listAttachmentId]="listAttachmentId"></iap-attachment>
+      </div>
+      <div class="action">
+        <button mat-raised-button color="primary" class="mat-button-lg" (click)="saveAssuranceProvider()">SAVE</button>
+        <button mat-raised-button class="mat-button-petronas-ghost" (click)="cancel()">CANCEL</button>
+      </div>
+    </iap-form-layout-template>
+  </form>
+</iap-box>
+
+<iap-list-assessor *ngIf="isEdit" [assuranceId]="assuranceProviderDetailId" [isSecondLine]="true"></iap-list-assessor>

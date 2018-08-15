@@ -1,0 +1,11 @@
+<form [class.disabled]="disabled === true">
+  <fieldset class="starability-fade">
+    <input [disabled]="disabled" type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating."
+    />
+    <ng-container *ngFor="let star of listStar">
+      <input (change)="handleChange(star)" #input [disabled]="disabled" type="radio" id="rate{{componentId + star}}" name="rating" [value]="star" />
+      <label for="rate{{componentId + star}}"></label>
+    </ng-container>
+    <span class="starability-focus-ring"></span>
+  </fieldset>
+</form>

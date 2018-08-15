@@ -1,0 +1,10 @@
+<div class="detail">
+  <iap-label>Findings</iap-label>
+  <a [routerLink]="'/web/annual-assurance-plan/assurance-plan/checklist/findings/detail/' + findingItem.id" class="pet-link">{{findingItem.description}}</a>
+  <iap-label>Type of Findings</iap-label>
+  <iap-info-label>{{findingItem.typeOfFinding}}</iap-info-label>
+</div>
+<div class="action-item">
+ <!-- list check list cap action -->
+<iap-checklist-cap-action-item [checklistCapActionItem]="item" *ngFor="let item of findingItem.listActionItems"></iap-checklist-cap-action-item>
+</div>

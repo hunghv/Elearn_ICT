@@ -1,0 +1,10 @@
+<iap-box class="left-bordered blue">
+  <div class="fx-row wrap items-4">
+    <iap-card-info [name]="'Department Name'" class="no-elipsis auto-height">{{data?.departmentName}}</iap-card-info>
+    <iap-card-info [name]="'Assurance Line'" class="no-elipsis auto-height">{{data?.assuranceLine}}</iap-card-info>
+    <iap-card-info [name]="'Total Line Items'" class="no-elipsis auto-height">
+      <a href="" class="pet-link">{{data?.totalLineItems}}</a>
+    </iap-card-info>
+    <iap-card-info [name]="'Status'" class="no-elipsis auto-height">{{data?.status}}</iap-card-info>
+  </div>
+</iap-box>

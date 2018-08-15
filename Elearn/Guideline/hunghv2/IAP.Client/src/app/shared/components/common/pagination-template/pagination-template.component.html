@@ -1,0 +1,28 @@
+<div class="pagination">
+    <div class="paginationTemp">
+        <ul id="paginationTemplate" class="cdp" actpage="1">
+            <li class="cdp_i" (click)="setPage(pager.currentPage - 1)">
+                <a>Prev</a>
+            </li>
+            <li class="cdp_i" *ngFor="let page of pager.pages" (click)="setPage(page)">
+                <a>{{page}}</a>
+            </li>
+            <li class="cdp_i" (click)="setPage(pager.currentPage + 1)">
+                <a>Next</a>
+            </li>
+          </ul>
+    </div>
+    <div class="paginationInfo">
+        <p>Items per page: 
+            <mat-form-field>
+                <mat-select [(ngModel)]="pager.pageSize" (change)="changePageSize($event.value)">
+                    <mat-option *ngFor="let pageSize of pager.lstPageSize" [value]="pageSize">
+                        {{ pageSize }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <b>{{pager.startIndex}}</b> - <b>{{pager.endIndex}}</b> of <b>{{pager.totalItems}}</b>
+        </p>
+    </div>
+</div>
+<!-- pager -->

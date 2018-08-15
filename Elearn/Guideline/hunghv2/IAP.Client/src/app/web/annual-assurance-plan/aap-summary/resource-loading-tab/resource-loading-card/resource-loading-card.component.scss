@@ -1,0 +1,93 @@
+@import 'variable.color';
+@import 'mixin';
+$icon-width: 30px;
+:host {
+  display: block;
+  border-right: 2px solid transparent;
+}
+
+iap-box {
+  display: flex;
+  .header {
+    flex-basis: 350px;
+    max-width: 350px;
+    padding-right: 16px;
+    border-right: 1px solid $color-iap-hr;
+    .name {
+      font-weight: bold;
+      color: $color-iap-dark-text;
+      display: flex;
+      align-items: center;
+      i {
+        color: $color-iap-gold;
+        flex-basis: $icon-width;
+        flex-shrink: 0;
+      }
+      span {
+        display: block;
+        @include elipsisText;
+      }
+    }
+    .ref-list-container {
+      max-height: 100px;
+      height: 100px;
+      overflow: auto;
+      .ref-list {
+        margin-left: $icon-width;
+        a {
+          text-decoration: underline;
+          color: $color-iap-dark-text;
+          font-weight: bold;
+          word-break: break-all;
+        }
+        &:first-child {
+          margin-top: 0;
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  .content {
+    flex-basis: auto;
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .month-data {
+      flex-basis: calc(100%/6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      @include responsive($max-width: 40em) {
+        flex-basis: calc(100%/4);
+      }
+      @include responsive($max-width: 30em) {
+        flex-basis: calc(100%/3);
+      }
+      .data {
+        .positive {
+          color: $color-positive;
+        }
+        .negative {
+          color: $color-negative;
+        }
+      }
+    }
+  }
+  @include responsive($max-width: 55em) {
+    flex-direction: column;
+    .header {
+      flex-basis: auto;
+      max-width: 100%;
+      border: none;
+      padding-right: 0;
+      margin-bottom: 8px;
+    }
+    .month-data {
+      margin-bottom: 8px;
+    }
+  }
+}

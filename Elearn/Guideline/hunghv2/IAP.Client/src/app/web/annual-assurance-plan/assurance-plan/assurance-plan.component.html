@@ -1,0 +1,77 @@
+<iap-breadscrumb></iap-breadscrumb>
+<iap-progress-bar-small></iap-progress-bar-small>
+<iap-page-header>
+  Assurance Plan
+</iap-page-header>
+
+<div class="annual-item-container">
+  <div class="list-item-info">
+    <div class="item-info">
+      <p>Reference No</p>
+      <p>{{assurance.referenceNumber}}</p>
+    </div>
+    <div class="item-info">
+      <p>Assurance Year</p>
+      <p>{{assurance.year}}</p>
+    </div>
+  </div>
+  <div class="list-item-info">
+    <div class="item-info">
+      <p>Assurance Category</p>
+      <p>{{assurance.category}}</p>
+    </div>
+    <div class="item-info">
+      <p>Assurance Line</p>
+      <p>{{assurance.lineName}}</p>
+    </div>
+  </div>
+  <div class="list-item-info">
+    <div class="item-info">
+      <p>Status</p>
+      <p>{{assurance.status}}</p>
+    </div>
+  </div>
+</div>
+<iap-box class="normal-border">
+  <iap-assurance-tab-content [assurancePlan]="assurance" [isSubmitter]="isSubmitter" (selectedIndex)="changeListContent($event)">
+  </iap-assurance-tab-content>
+</iap-box>
+<iap-list-assessor [assuranceId]="assurance?.id" [isSecondLine]="false" *ngIf="!assurance?.isSecondLine && selectedTab === 0 && leadassessor"></iap-list-assessor>
+<iap-cap-card *ngIf="selectedTab === 1 && apAssigner" class="col-md-12"></iap-cap-card>
+
+<div *ngIf="selectedTab === 1 && leadassessor">
+  <div *ngIf="assurance.lineName === 'First Line'">
+    <!-- <iap-list-checklist-item [checklistItems]="assurance?.checklistItems" *ngIf="selectedTab === 1 && leadassessor">
+    </iap-list-checklist-item> -->
+    <!-- code in here -->
+
+    <!-- List checklist -->
+    <iap-list-checklist-item [checklistItems]="assurance?.checklistItems" *ngIf="selectedTab === 1 && leadassessor">
+    </iap-list-checklist-item>
+
+    <!-- First line FC -->
+    <iap-list-checklist-item-approver-view [assurancePlanId]="assurance?.id">
+    </iap-list-checklist-item-approver-view>
+
+    <iap-list-checklist-item-first-line-fc-assign-action-party-view [assurancePlanId]="assurance?.id">
+    </iap-list-checklist-item-first-line-fc-assign-action-party-view>
+
+    <!-- First line MS -->
+    <iap-checklist-workflow-body-lead-report-view [firstLineMsLeadAccessorReportApproverItem]="item" *ngFor="let item of firstLineMsLeadAccessorReportApproverItems">
+    </iap-checklist-workflow-body-lead-report-view>
+
+    <iap-checklist-workflow-body-cap [firstLineMsLeadAccessorReportApproverItem]="item" *ngFor="let item of firstLineMsEndorserApproverViews">
+    </iap-checklist-workflow-body-cap>
+
+  </div>
+
+  <div *ngIf="assurance.lineName === 'Second Line'">
+    <iap-list-findings-item [parentFindingType]='parentFindingType' [parentId]="assurance?.id"></iap-list-findings-item>
+  </div>
+
+</div>
+
+
+<iap-list-fieldwork-reporting-checklist *ngIf="selectedTab === 1 && approver"></iap-list-fieldwork-reporting-checklist>
+
+<iap-list-apd *ngIf="selectedTab === 0 && assurance?.isSecondLine" [assurancePlanId]="assurance?.id" [assuranceProviders]="assurance?.listAssuranceProviders"></iap-list-apd>

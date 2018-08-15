@@ -1,0 +1,13 @@
+<div class="header col-md-12">
+  <div class="title"> List of Checklist Item For Approver For First Line FC
+  </div>
+</div>
+
+<iap-box class="left-bordered violet" *ngFor="let item of listChecklist">
+  <iap-checklist-workflow-header [checklistItemFC]="item" (expand)="handleExpand()" (collapse)="handleCollapse()"></iap-checklist-workflow-header>
+  <div class="container" #body>
+    <hr>
+    <iap-checklist-workflow-body-approver-view [checklistItemFC]="item"></iap-checklist-workflow-body-approver-view>  
+  </div>
+</iap-box>
+

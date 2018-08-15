@@ -1,0 +1,33 @@
+<iap-dialog-header>
+  <h2>CREATE DEPARTMENT AAP</h2>
+  <button mat-icon-button class="close-button" mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</iap-dialog-header>
+<mat-dialog-content>
+  <div class="content">
+    <p class="notice">Please complete all compulsory fields(*) and click Save to complete your review.</p>
+    <form [formGroup]="form">
+      <div class="content-wrapper">
+        <div class="col-md-12 row">
+          <input type="hidden">
+          <div class="col-md-8 group-info row">
+            <div class="group-location col-md-12">
+              <div class="col-md-6" *ngFor="let location of lstLocation; let i = index">
+                <mat-checkbox [value]="location.id" (change)="onCheckChange($event)" [checked]="location.isChecked">{{location.name}}</mat-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 col-md-offset-2">
+            <div class="button-group">
+              <button mat-raised-button color="primary" (click)="onSubmit()">SAVE</button>
+              <button mat-raised-button color="primary" (click)="onApply()">APPLY</button>
+              <button mat-raised-button class="btn-petronas" mat-dialog-close>CANCEL</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>

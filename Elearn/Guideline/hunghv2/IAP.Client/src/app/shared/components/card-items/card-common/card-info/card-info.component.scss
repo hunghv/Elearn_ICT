@@ -1,0 +1,30 @@
+@import 'mixin';
+@import 'variable.color';
+:host {
+  display: block;
+  margin-bottom: 10px;
+  >p {
+    margin: 0;
+    font-weight: bold;
+    color: $color-label-content;
+  }
+  &:not(.no-elipsis) {
+    >p {
+      word-break: break-all;
+      @include multiLineElipsisText(1.2em, 2);
+    }
+  }
+  &.no-elipsis {
+    >p {
+      word-break: break-all;
+      line-height: 1.2em;
+      min-height: 2.4em;
+    }
+    &.auto-height {
+      >p {
+        min-height: auto;
+      }
+    }
+  }
+
+}

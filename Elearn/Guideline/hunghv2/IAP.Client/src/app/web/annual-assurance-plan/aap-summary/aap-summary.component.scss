@@ -1,0 +1,23 @@
+$back-size: 40px;
+iap-box {
+  display: flex;
+  .action {
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    >a {
+      ::ng-deep .mat-button-wrapper {
+        display: flex;
+        align-items: center;
+      }
+      mat-icon {
+        font-size: $back-size;
+      }
+    }
+  }
+  iap-aap-summary-content {
+    width: calc(100% - 70px);
+    flex-grow: 1;
+  }
+}

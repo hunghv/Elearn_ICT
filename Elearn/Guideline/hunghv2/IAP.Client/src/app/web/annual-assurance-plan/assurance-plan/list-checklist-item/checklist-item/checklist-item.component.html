@@ -1,0 +1,26 @@
+<iap-small-card-template [color]="'ap'">
+  <header>
+    <div *ngFor="let section of checklistItem?.listSection">
+      <div class="title parent">
+        <p class="number">{{section.refNo}}</p>
+        <p>{{section.description}}</p>
+      </div>
+    </div>
+
+    <div class="title">
+      <p class="number"></p>
+      <p class="content">{{checklistItem.question}}</p>
+    </div>
+  </header>
+  <footer>
+    <iap-card-nav [href]="['/web/annual-assurance-plan/assurance-plan/checklist', checklistItem.assuranceTypeName, checklistItem.id]">Access this item</iap-card-nav>
+    <!-- <iap-card-nav-icon-row>
+    <iap-card-state [isComply]="false"></iap-card-state>
+    <iap-card-nav-icon></iap-card-nav-icon>
+  </iap-card-nav-icon-row>  -->
+    <iap-card-info-row>
+      <iap-card-info [name]="'Findings'">{{checklistItem.mumberOfFinding}}</iap-card-info>
+      <iap-card-info [name]="'Action Item(s)'">{{checklistItem.numberOfActionItem}}</iap-card-info>
+    </iap-card-info-row>
+  </footer>
+</iap-small-card-template>

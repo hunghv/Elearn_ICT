@@ -1,0 +1,11 @@
+<iap-small-card-template [color]="'assessor'">
+  <header>
+    <iap-card-status (deleteItem)="onDelete()"></iap-card-status>
+    <iap-card-info [name]="'Assessor Name'">{{assessor.name}}</iap-card-info>
+  </header>
+  <footer>
+    <iap-card-info [name]="'Email'">{{assessor.email}}</iap-card-info>
+    <iap-card-info [name]="'OPU'">{{assessor.opu}}</iap-card-info>
+    <iap-card-info [name]="'Department'">{{assessor.department}}</iap-card-info>
+  </footer>
+</iap-small-card-template>

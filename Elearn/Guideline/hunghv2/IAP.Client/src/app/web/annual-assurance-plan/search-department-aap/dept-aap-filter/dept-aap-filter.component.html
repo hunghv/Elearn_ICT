@@ -1,0 +1,69 @@
+<iap-box class="normal-border">
+  <div class="detail">
+    <form [formGroup]="form">
+      <div class="detail row col-md-12">
+        <div class="col-md-9 col-xs-12">
+          <div class="row">
+            <mat-form-field class="col-md-5">
+              <input matInput formControlName="refNo" placeholder="Reference Number" />
+            </mat-form-field>
+            <mat-form-field class="col-md-5">
+              <input matInput formControlName="year" placeholder="Year (e.g:2018)" />
+            </mat-form-field>
+          </div>
+
+          <div class="row">
+            <mat-form-field class="col-md-5">
+              <mat-select formControlName="enterpriseId" (selectionChange)="onOpuChange($event)" placeholder="OPU / Company">
+                <mat-option *ngFor="let item of filterModel?.mdEnterprises" [value]="item.id">{{item.name}}</mat-option>
+              </mat-select>
+
+            </mat-form-field>
+            <mat-form-field class="col-md-5">
+              <mat-select formControlName="assuranceLineId" placeholder="Assurance Line">
+                <mat-option *ngFor="let item of filterModel?.mdDepartmentAAPLines" [value]="item.id">{{item.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+
+          </div>
+          <div class="row">
+            <!-- <mat-form-field class="col-md-5">
+              <mat-select formControlName="assuranceProviderId" placeholder="Assurance Provider" >
+                  <mat-option *ngFor="let item of filterModel?.mdDepartmentAAPProviders" [value]="item.id">{{item.name}}</mat-option>
+              </mat-select>
+              
+            </mat-form-field> -->
+            <mat-form-field class="col-md-5">
+              <mat-select formControlName="departmentId" placeholder="Department">
+                <mat-option>Please select</mat-option>
+                <mat-option [value]="item.id" *ngFor="let item of lstDepartment">{{item.name}}</mat-option>
+              </mat-select>
+
+            </mat-form-field>
+
+          </div>
+        </div>
+        <div class="col-md-3 col-xs-12">
+          <div class="btn-group">
+            <div class="detail-action">
+              <button mat-raised-button color="primary" (click)="onSearchClick()">SEARCH</button>
+            </div>
+            <div class="detail-action">
+              <button mat-raised-button class="mat-button-petronas-ghost" (click)="onCancelClick()">CANCEL</button>
+            </div>
+            <div class="detail-action">
+              <button mat-raised-button class="mat-button-petronas-ghost" (click)="onResetClick()">RESET</button>
+            </div>
+          </div>
+
+          <div *ngIf="false" class="btn-group">
+            <div class="detail-action">
+              <button mat-raised-button id="edit" class="btn-ghost petronas">EDIT</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</iap-box>

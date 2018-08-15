@@ -1,0 +1,10 @@
+<iap-box class="left-bordered dept-aap">
+  <div class="info">
+    <iap-card-info [name]="'Assurance Type'">{{data?.assuranceType}}</iap-card-info>
+  </div>
+  <div class="chart-container">
+    <div class="chart">
+      <iap-submission-chart [data]="data?.listNoOfPlanned"></iap-submission-chart>
+    </div>
+  </div>
+</iap-box>

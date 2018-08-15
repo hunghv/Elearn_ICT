@@ -1,0 +1,52 @@
+@mixin justify-content($wk, $ms, $flex, $text-align) {
+  -webkit-box-pack: $wk;
+  -ms-flex-pack: $ms;
+  justify-content: $flex;
+  text-align: $text-align;
+}
+
+@mixin align-items($wk, $ms, $flex) {
+  -webkit-box-align: $wk;
+  -ms-flex-align: $ms;
+  align-items: $flex;
+}
+
+@mixin order-item($wf, $ms, $order) {
+  -webkit-box-ordinal-group: wf;
+  -ms-flex-order: $ms;
+  order: $order;
+}
+
+@mixin margin-left-right($value) {
+  margin-right: $value;
+  margin-left: $value;
+}
+
+@mixin col-width($width) {
+  -ms-flex-preferred-size: $width;
+  flex-basis: $width;
+  max-width: $width;
+}
+
+@mixin flex-direction($webkit-box-orient, $webkit-box-direction, $ms-flex-direction, $flex-direction) {
+  -webkit-box-orient: $webkit-box-orient;
+  -webkit-box-direction: $webkit-box-direction;
+  -ms-flex-direction: $ms-flex-direction;
+  flex-direction: $flex-direction;
+}
+
+@mixin generateColumnWidth($screenSize) {
+  @for $i from 1 through 12 {
+    .col-#{$screenSize}-#{$i} {
+      @include col-width($col-width * $i);
+    }
+  }
+}
+
+@mixin generateColumnOffset($screenSize) {
+  @for $i from 1 through 11 {
+    .col-#{$screenSize}-offset-#{$i} {
+      margin-left: $col-width * $i;
+    }
+  }
+}

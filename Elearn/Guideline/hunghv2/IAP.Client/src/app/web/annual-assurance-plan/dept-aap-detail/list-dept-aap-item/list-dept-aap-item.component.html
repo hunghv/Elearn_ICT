@@ -1,0 +1,16 @@
+<iap-list-header-row>
+  <iap-list-header [name]="'List of Department AAP Items:'">
+    <span class="item-count">{{lstDepAAPItem?.length}} item(s)</span>
+    <button mat-raised-button class="mat-button-petronas-ghost" (click)="addNewPlan()">+ ADD NEW PLAN</button>
+  </iap-list-header>
+  <iap-list-header-action>
+    <a routerLink="/web/annual-assurance-plan/summary/calendar">
+      <button mat-raised-button class="mat-button-petronas-ghost-small">CALENDAR VIEW</button>
+    </a>
+  </iap-list-header-action>
+</iap-list-header-row>
+<hr>
+<iap-list-small-card-template>
+  <iap-dept-aap-item (onDeleteClick)="onDelete(item)" [deptAapItem]="item" *ngFor="let item of lstDepAAPItem"></iap-dept-aap-item>
+
+</iap-list-small-card-template>

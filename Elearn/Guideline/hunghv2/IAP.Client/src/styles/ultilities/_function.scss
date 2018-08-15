@@ -1,0 +1,3 @@
+@function isValidSize($size) {
+  @return type-of($size)==number and unitless($size)==false;
+}

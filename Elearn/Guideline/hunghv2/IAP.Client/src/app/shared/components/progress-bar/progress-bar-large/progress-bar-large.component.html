@@ -1,0 +1,2 @@
+<iap-progress-bar-large-step *ngFor="let step of data.listStep" [data]="step" (selectedStepChange)="onSelectedStepChanged($event)"
+  [class.expand]="step.stepIndex === selectedStep"></iap-progress-bar-large-step>

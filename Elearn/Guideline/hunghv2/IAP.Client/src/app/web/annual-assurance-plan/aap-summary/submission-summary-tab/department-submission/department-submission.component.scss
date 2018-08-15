@@ -1,0 +1,76 @@
+@import 'variable';
+@import 'mixin';
+
+:host {
+  padding: 0;
+}
+
+.card-item {
+  font-size: 85%;
+  padding-right: 0;
+}
+
+.card-content {
+  font-weight: 500;
+  font-size: 120%;
+  @include mediaSmallScreen {
+    text-align: center;
+  }
+  @include mediaExtraSmallScreen {
+    text-align: center;
+  }
+  .action-party {
+    display: flex;
+    //
+    &:not(:last-child){
+      border-bottom: 1px solid gainsboro;
+    }
+    &:not(:first-child){
+      margin-top: 20px;
+    }
+  }
+  .group-info {
+    display: flex;
+    &.borderd{
+      border-right: 1px solid gainsboro;
+      @include mediaSmallScreen {
+        margin-bottom: 15px;
+      border-right: none;
+      border-bottom: 1px solid gainsboro;
+      }
+      @include mediaExtraSmallScreen {
+        margin-bottom: 15px;
+        border-right: none;
+      border-bottom: 1px solid gainsboro;
+      }
+    }
+
+    .item {
+      .title {
+        font-weight: 300;
+        font-size: 85%;
+        color: rgba(0, 0, 0, 0.68);
+        margin-bottom: 7px;
+      }
+      .info{
+        > ul{
+          > li{
+            text-decoration: underline;
+            list-style: none;
+            margin-bottom: 10px
+          }
+        }
+      }
+      >a {
+        text-transform: uppercase;
+        word-break: break-all;
+        text-decoration: underline;
+      }
+    }
+
+  }
+}
+
+iap-box {
+  margin-top: 30px;
+}

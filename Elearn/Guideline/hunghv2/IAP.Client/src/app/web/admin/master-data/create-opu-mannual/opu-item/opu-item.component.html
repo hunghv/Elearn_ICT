@@ -1,0 +1,22 @@
+<iap-small-card-template [color]="'dept-aap'">
+  <header>
+    <iap-card-status [disableAction]="true" [time]="dateView">Draft</iap-card-status>
+    <iap-card-ref [name]="'Ref No.'">{{opu.referenceNo || 'Reference No.'}}</iap-card-ref>
+  
+  </header>
+  <footer>
+    <iap-card-info-row>
+      <iap-card-info [name]="'Year'">{{opu.year || '2018'}}</iap-card-info>
+      <iap-card-info [name]="'Assurance Line'">{{opu.assuranceLineName || 'First Line'}}</iap-card-info>
+    
+    </iap-card-info-row>
+    <iap-card-info-row>
+        <iap-card-info [name]="'OPU'">{{opu.opuName || 'SKO'}}</iap-card-info>
+        <iap-card-info [name]="'Created Source'">Manual</iap-card-info>
+    </iap-card-info-row>
+    <iap-card-nav-icon-row>
+        <iap-card-info [name]="'Creation Date'">{{dateView}}</iap-card-info>
+      <iap-card-nav-icon [href]="['/web/admin/opu-detail',opu.id]"></iap-card-nav-icon>
+    </iap-card-nav-icon-row>
+  </footer>
+</iap-small-card-template>

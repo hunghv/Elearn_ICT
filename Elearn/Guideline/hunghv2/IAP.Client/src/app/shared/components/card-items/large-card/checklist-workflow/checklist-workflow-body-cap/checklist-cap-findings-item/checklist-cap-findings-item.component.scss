@@ -1,0 +1,16 @@
+:host {
+    display: flex;
+}
+
+.detail {
+    flex-basis: 30%;
+    padding-right: 16px;
+}
+.action-item {
+    flex-grow: 1;
+}
+
+.pet-link {
+    display: block;
+    margin-bottom: 16px;
+}

@@ -1,0 +1,25 @@
+<iap-small-card-template [color]="'ap'">
+  <header>
+    <iap-card-status (deleteItem)="onDelete()" [time]="[dateView]">{{assurance?.status}}</iap-card-status>
+    <iap-card-ref [name]="'Ref No'">{{assurance?.referenceNumber || '-'}}</iap-card-ref>
+    <iap-card-info [name]="'Title'">{{assurance?.title || '-'}}</iap-card-info>
+  </header>
+  <footer>
+    <iap-card-info-row>
+      <iap-card-info [name]="'Assurance'">{{assurance?.assuranceTypeName || '-'}}</iap-card-info>
+      <iap-card-info [name]="'Risk Area'">{{assurance?.mdRiskAreaName || '-'}}</iap-card-info>
+      <iap-card-info [name]="'Lead Assessor'">{{assurance?.leadAssessorName || '-'}}</iap-card-info>
+      <iap-card-info [name]="'Team Leader'">{{assurance?.teamLeadName || '-'}}</iap-card-info>
+      <iap-card-info [name]="'Year'">{{assurance?.year || '-'}}</iap-card-info>
+      <iap-card-info [name]="'Month'">{{assurance?.monthName || '-'}}</iap-card-info>
+      <iap-card-info [name]="'Assurance Start Date'">{{startDate || '-'}}</iap-card-info>
+      <iap-card-info [name]="'Assurance End Date'">{{endDate || '-'}}</iap-card-info>
+    </iap-card-info-row>
+    
+    <iap-card-nav-icon-row>
+        <iap-card-info [name]="''"></iap-card-info>
+      <iap-card-nav-icon [href]="['/web/annual-assurance-plan/assurance-plan',assurance?.id]"></iap-card-nav-icon>
+    </iap-card-nav-icon-row>
+  </footer>
+</iap-small-card-template>
+

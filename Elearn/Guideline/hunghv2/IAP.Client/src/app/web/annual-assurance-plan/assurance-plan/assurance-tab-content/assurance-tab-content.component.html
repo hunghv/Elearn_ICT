@@ -1,0 +1,12 @@
+<iap-assurance-tab [isSubmitter]="isSubmitter" (selectedIndexChange)="ChangeHandler($event)">
+    <div class="detail" >
+        <iap-detail-tab [isSubmitter]="isSubmitter"></iap-detail-tab>
+    </div>
+    <div class="finding-action">
+        <iap-finding-action-tab [assurancePlan]="assurancePlan"></iap-finding-action-tab>
+    </div>
+    <!-- <div class="finding-action">
+        <iap-finding-action-tab></iap-finding-action-tab>
+    </div> -->
+  </iap-assurance-tab>
+  

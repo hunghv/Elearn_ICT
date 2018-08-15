@@ -1,0 +1,16 @@
+<iap-list-header-row>
+  <iap-list-header [name]="'Resource Loading Results: '">
+    <span class="item-count">{{data.length}} person(s)</span>
+  </iap-list-header>
+  <iap-list-header-action>
+    <button mat-raised-button class="mat-button-petronas-ghost-small-long">EXPORT</button>
+    <button mat-raised-button class="mat-button-petronas-ghost-small-long" (click)="openFilter()">FILTER</button>
+  </iap-list-header-action>
+</iap-list-header-row>
+<hr>
+
+<iap-search-filter-result [filterMD]="filterMD" [filterFormResult]="filterFormResult" (removeFilter)="handleRemoveFilter($event)"></iap-search-filter-result>
+
+<div class="results">
+  <iap-resource-loading-card *ngFor="let item of data" [data]="item"></iap-resource-loading-card>
+</div>

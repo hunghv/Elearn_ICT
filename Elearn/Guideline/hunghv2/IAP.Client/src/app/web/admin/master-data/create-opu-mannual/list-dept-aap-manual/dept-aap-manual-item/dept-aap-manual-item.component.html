@@ -1,0 +1,17 @@
+<iap-small-card-template [color]="'opu-aap'">
+    <header>
+      <iap-card-status [disableAction]="true" [time]="'18:30 19/2/2018'">Draft</iap-card-status>
+      <iap-card-ref [name]="'Reference No'">{{ deptAAP?.referenceNumber || 'APP/MLNG/DEPTA/2018'}}</iap-card-ref>
+    </header>
+    <footer>
+      <iap-card-info-row>
+        <iap-card-info [name]="'Department'">{{deptAAP?.locationName || 'DepartmentA'}}</iap-card-info>
+        <iap-card-info [name]="'Creation Source'">Manual</iap-card-info>
+      </iap-card-info-row>
+      <iap-card-nav-icon-row>
+          <iap-card-info [name]="'Creation Date'">{{deptAAP?.insertedAt.substr(0,10)}}</iap-card-info>
+        <iap-card-nav-icon [href]="['/web/admin/dept-detail',deptAAP.id]"></iap-card-nav-icon>
+      </iap-card-nav-icon-row>
+    </footer>
+  </iap-small-card-template>
+  

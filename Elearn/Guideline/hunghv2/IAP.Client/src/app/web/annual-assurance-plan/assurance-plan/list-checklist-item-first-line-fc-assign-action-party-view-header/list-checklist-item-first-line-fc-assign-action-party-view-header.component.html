@@ -1,0 +1,41 @@
+<!-- <div class="description" *ngIf="question"></div> -->
+<div class="description">
+  <div class="section" *ngFor="let section of question?.listSections" >
+    <span class="number">{{section.referenceNumber}}</span>
+    <span class="content">{{section.description}}</span>
+  </div>
+  <div class="question">
+    <span class="number">{{question?.questionReferenceNumber}}</span>
+    <span class="content">{{question?.questionName}}</span>
+  </div>
+</div>
+<div class="info">
+  <ng-container *ngIf="true">
+    <div class="fx-row wrap items-2">
+      <div>
+        <iap-label>Total Findings</iap-label>
+        <iap-info-label>{{question?.totalFindings}}</iap-info-label>
+      </div>
+      <div>
+        <iap-label>Total Action Items</iap-label>
+        <iap-info-label>{{question?.totalActionItems}}</iap-info-label>
+      </div>
+    </div>
+  </ng-container>
+</div>
+<div class="status">
+  <ng-container *ngIf="true">
+    <h2 class="comply-status" [ngClass]="{
+      positive: false,
+      negative: true
+    }">
+      {{question?.compliance}}
+    </h2>
+  </ng-container>
+</div>
+<div class="action">
+  <button mat-mini-fab color="primary" (click)="toggleCard()">
+    <mat-icon *ngIf="isExpand">keyboard_arrow_up</mat-icon>
+    <mat-icon *ngIf="!isExpand">keyboard_arrow_down</mat-icon>
+  </button>
+</div>

@@ -1,0 +1,27 @@
+@import 'variable';
+@import 'mixin';
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  .title {
+    font-size: 150%;
+    color: $color-petronas;
+    font-weight: 600;
+    >span {
+      font-size: 70%;
+      color: black;
+      font-weight: 300;
+    }
+  }
+  .action {
+    margin-left: auto;
+    button {
+      border-radius: 20px;
+      background: white;
+      border: 2px solid $color-petronas;
+      color: $color-petronas;
+    }
+  }
+}

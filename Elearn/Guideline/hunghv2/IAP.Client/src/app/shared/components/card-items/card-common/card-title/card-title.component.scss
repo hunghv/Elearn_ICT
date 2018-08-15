@@ -1,0 +1,13 @@
+@import 'mixin';
+@import 'variable.color';
+:host {
+  display: block;
+  margin-bottom: 20px;
+  >p {
+    margin: 0;
+    color: $color-label-header;
+    font-weight: bold;
+    word-break: break-all;
+    @include multiLineElipsisText(1.2em, 2);
+  }
+}

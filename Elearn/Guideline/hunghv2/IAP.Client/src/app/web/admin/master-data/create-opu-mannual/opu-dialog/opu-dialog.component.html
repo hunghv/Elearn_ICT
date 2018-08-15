@@ -1,0 +1,68 @@
+<iap-dialog-header>
+  <h2>CREATE NEW ANNUAL ASSURANCE PLAN</h2>
+  <button mat-icon-button class="close-button" mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</iap-dialog-header>
+
+<mat-dialog-content>
+  <div class="content">
+    <p class="notice">Please complete all compulsory fields(*) and click Save to complete your review.</p>
+    <div class="content-wrapper">
+      <div class="input-fields">
+        <!-- <div class="system-generated-info">
+          <div class="info-item">
+            <iap-label required>AP Reference No</iap-label>
+            <p>&lt;system auto populate&gt;</p>
+          </div>
+          <div class="info-item">
+            <iap-label required>AP Status</iap-label>
+            <p>&lt;system auto populate&gt;</p>
+          </div>
+          <div class="info-item">
+            <iap-label required>Assurance Year</iap-label>
+            <p>2018</p>
+          </div>
+          <div class="info-item">
+            <iap-label required>Assurance Category</iap-label>
+            <p>Planned Assurance</p>
+          </div>
+        </div> -->
+
+        <form [formGroup]="form">
+          <div class="row">
+            <mat-form-field class="col-md-6">
+              <input matInput formControlName="year" placeholder="Year" required cdkFocusInitial>
+            </mat-form-field>
+
+            <mat-form-field class="col-md-6">
+              <mat-select formControlName="assuranceLineId" placeholder="Assurance Line">
+                <mat-option *ngFor="let item of opu?.mdAssuranceLines; let i = index" [disabled]="i > 1 " [value]="item.id">{{item.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+          <div class="row">
+            <mat-form-field class="col-md-6">
+              <mat-select formControlName="enterpriseId" placeholder="OPU">
+                <mat-option *ngFor="let item of opu?.mdEnterprises" [value]="item.id">{{item.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+
+            <!-- <mat-form-field class="col-md-6">
+              <mat-select formControlName="auditorId" [hidden]="true" placeholder="Cooporate">
+                <mat-option *ngFor="let item of opu?.mdAuditors" [value]="item.id">{{item.name}}</mat-option>
+              </mat-select>
+            </mat-form-field> -->
+          </div>
+
+        </form>
+      </div>
+      <div class="button-group">
+        <button mat-raised-button color="primary" (click)="onSubmit()">SAVE</button>
+        <button mat-raised-button color="primary" mat-dialog-close>CANCEL</button>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>

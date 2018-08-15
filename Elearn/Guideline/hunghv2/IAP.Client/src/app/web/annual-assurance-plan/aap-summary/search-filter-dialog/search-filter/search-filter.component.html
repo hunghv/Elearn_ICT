@@ -1,0 +1,64 @@
+<form [formGroup]="filterForm">
+  <div class="search-criteria">
+    <mat-form-field>
+      <mat-select formControlName="assuranceYear" placeholder="Assurance Year">
+        <mat-option *ngFor="let data of filterMD?.listAssuranceYear" [value]="data">{{data}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select formControlName="opuCompany" placeholder="OPU/Company">
+        <mat-option *ngFor="let data of filterMD?.listOpuCompany" [value]="data?.id">{{data?.display}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select formControlName="department" placeholder="Department">
+        <mat-option *ngFor="let data of filterMD?.listDepartment" [value]="data?.id">{{data?.display}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select formControlName="assuranceRole" placeholder="Assurance Role">
+        <mat-option *ngFor="let data of filterMD?.listAssuranceRole" [value]="data?.display">{{data?.display}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <ng-container *ngIf="isAdvanced">
+      <mat-form-field>
+        <mat-select formControlName="location" placeholder="Location">
+        <mat-option *ngFor="let data of filterMD?.listLocation" [value]="data?.id">{{data?.display}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select formControlName="assuranceLine" placeholder="Assurance Line">
+        <mat-option *ngFor="let data of filterMD?.listAssuranceLine" [value]="data?.id">{{data?.display}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select formControlName="assuranceType" placeholder="Assurance Type">
+        <mat-option *ngFor="let data of filterMD?.listAssuranceType" [value]="data?.id">{{data?.display}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select formControlName="riskArea" placeholder="Risk Area">
+        <mat-option *ngFor="let data of filterMD?.listRiskArea" [value]="data?.id">{{data?.display}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select formControlName="checklist" placeholder="Checklist">
+        <mat-option *ngFor="let data of filterMD?.listChecklist" [value]="data?.id">{{data?.display}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select formControlName="assuranceProvider" placeholder="Assurance Provider">
+        <mat-option *ngFor="let data of filterMD?.listAssuranceProvider" [value]="data?.id">{{data?.display}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </ng-container>
+  </div>
+  <div class="search-action">
+    <button mat-raised-button color="primary" cdkFocusInitial (click)="applyFilter()">APPLY</button>
+    <button class="mat-button-petronas-ghost" mat-raised-button (click)="resetForm()">RESET</button>
+  </div>
+  <div class="advanced">
+    <button class="mat-button-petronas-ghost-small" mat-raised-button *ngIf="!isAdvanced" (click)="toggleFilterAdvanced()">Show Advanced Filters</button>
+    <button class="mat-button-petronas-ghost-small" mat-raised-button *ngIf="isAdvanced" (click)="toggleFilterAdvanced()">Hide Advanced Filters</button>
+  </div>
+</form>

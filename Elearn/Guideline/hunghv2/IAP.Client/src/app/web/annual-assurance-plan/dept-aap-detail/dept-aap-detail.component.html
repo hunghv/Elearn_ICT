@@ -1,0 +1,34 @@
+<iap-breadscrumb></iap-breadscrumb>
+<iap-progress-bar-small></iap-progress-bar-small>
+<iap-page-header>Dept Annual Assurance Plan </iap-page-header>
+<iap-box class="none-shadow bottom-bordered thin page-header">
+  <iap-form-layout-template class="col-70-30">
+    <div class="main-content">
+      <div class="fx-row wrap items-2">
+        <iap-card-ref [name]="'Reference No'">{{deptAap?.referenceNumber}}</iap-card-ref>
+        <iap-card-info [name]="'OPU'">{{deptAap?.opuName}}</iap-card-info>
+      </div>
+      <div class="fx-row wrap items-2">
+        <iap-card-info [name]="'Assurance Year'">{{deptAap?.year}}</iap-card-info>
+        <iap-card-info [name]="'Department'">{{deptAap?.departmentName}}</iap-card-info>
+      </div>
+      <div class="fx-row wrap items-2">
+        <iap-card-info [name]="'Assurance Line'">First Line</iap-card-info>
+        <iap-card-info [name]="'Annual Plan Status (Department)'">{{deptAap?.status}}</iap-card-info>
+      </div>
+    </div>
+    <div class="action">
+      <div class="top">
+        <button mat-raised-button color="primary" class="mat-button-lg" [disabled]="deptAap?.deptAAPItems.length == 0 || numberAapItemcompleted != deptAap?.deptAAPItems.length">SUBMIT</button>
+        <div class="info">
+          <iap-info-label normal-text>Submit for Consolidation</iap-info-label>
+          <iap-info-label>{{numberAapItemcompleted}} of {{deptAap?.deptAAPItems.length}} completed</iap-info-label>
+        </div>
+      </div>
+      <div class="bottom">
+          <button mat-raised-button class="mat-button-petronas-ghost" (click)="location.back()">CANCEL</button>
+      </div>
+    </div>
+  </iap-form-layout-template>
+</iap-box>
+<iap-list-dept-aap-item (onListAAPItemChanged)="onListAAPItemChanged($event)" [deptAapId]="deptAap?.id" [isAdmin]="isAdmin" [lstDepAAPItem] ="deptAap?.deptAAPItems"></iap-list-dept-aap-item>

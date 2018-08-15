@@ -1,0 +1,34 @@
+<iap-breadscrumb></iap-breadscrumb>
+<iap-progress-bar-small></iap-progress-bar-small>
+<iap-page-header>
+  OPU Annual Assurance Plan
+</iap-page-header>
+<iap-box class="none-shadow bottom-bordered thin page-header">
+  <iap-form-layout-template>
+    <div class="main-content">
+      <div class="fx-row wrap items-2">
+        <iap-card-info [name]="'Reference No'">AAP/MLNG/2018</iap-card-info>
+        <iap-card-info [name]="'OPU'">{{opu?.opuName}}</iap-card-info>
+      </div>
+      <div class="fx-row wrap items-2">
+        <iap-card-info [name]="'Assurance Year'">2018</iap-card-info>
+        <iap-card-info [name]="'Annual Plan Status (OPU/Asset)'">{{opu?.status || 'DRAFT'}}</iap-card-info>
+      </div>
+      <div class="fx-row wrap items-2">
+        <iap-card-info [name]="'Assurance Line'">{{opu?.assuranceLineName || 'First Line'}}</iap-card-info>
+      </div>
+    </div>
+    <div *ngIf="!isAdmin" class="action">
+      <div class="submit">
+        <button mat-raised-button color="primary" class="mat-button-lg">SUBMIT</button>
+        <div>
+          <iap-info-label>Submit for Endorsement</iap-info-label>
+          <iap-info-label>0 of 2 completed</iap-info-label>
+        </div>
+      </div>
+      <button mat-raised-button class="mat-button-ghost">CANCEL</button>
+    </div>
+  </iap-form-layout-template>
+</iap-box>
+<iap-list-dept-aap [enterpriseId]="opu?.enterpriseId"  [opuId]="opu?.id" [isAdmin]="isAdmin" [lstDeptAAP] ="opu?.deptAAPs"></iap-list-dept-aap>  
+
