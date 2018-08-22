@@ -1,9 +1,0 @@
-<h2>List of Finding: <span class="number-item">{{findings.length}} items</span></h2>
-<div class="action">
-  <button mat-raised-button class="mat-button-lg mat-button-border primary" (click)="openFindingDialog()">
-    <mat-icon>add</mat-icon> Create Finding</button>
-</div>
-
-<iap-list-small-card-template >
-  <iap-findings-item (onDeleteClick)="onDelete(item)" *ngFor="let item of findings" [finding]="item"></iap-findings-item>
-</iap-list-small-card-template>

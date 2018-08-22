@@ -1,8 +1,0 @@
-<iap-nav-bar></iap-nav-bar>
-<div #webContent class="web-content" [@routerTransition]="getState(outlet)">
-  <router-outlet #outlet="outlet" class="web-router"></router-outlet>
-</div>
-
-<button mat-mini-fab class="scroll-top" [class.active]="scrollButtonActive" (click)="scrollTop()" color="acent">
-  <mat-icon>keyboard_arrow_up</mat-icon>
-</button>
