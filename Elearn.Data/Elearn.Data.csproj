@@ -67,17 +67,11 @@
   <ItemGroup>
     <Compile Include="Common\ElearnContext.cs" />
     <Compile Include="Entities\Attachments.cs" />
-    <Compile Include="Entities\EmailTemplate.cs" />
-    <Compile Include="Entities\Employee.cs" />
-    <Compile Include="Entities\NewsComment.cs" />
     <Compile Include="Entities\Categories.cs" />
     <Compile Include="Entities\Base\Entity.cs" />
     <Compile Include="Entities\Country.cs" />
     <Compile Include="Entities\CoverImage.cs" />
-    <Compile Include="Entities\Like.cs" />
-    <Compile Include="Entities\News.cs" />
     <Compile Include="Entities\Role.cs" />
-    <Compile Include="Entities\SharedNews.cs" />
     <Compile Include="Entities\Status.cs" />
     <Compile Include="Entities\UserLoginHistory.cs" />
     <Compile Include="Entities\UserProfile.cs" />
@@ -110,12 +104,7 @@
     <Compile Include="Repository\Implementation\CategoriesRepository.cs" />
     <Compile Include="Repository\Implementation\CountryRepository.cs" />
     <Compile Include="Repository\Implementation\CoverImagesRepository.cs" />
-    <Compile Include="Repository\Implementation\EmployeeRepository.cs" />
-    <Compile Include="Repository\Implementation\LikeRepository.cs" />
-    <Compile Include="Repository\Implementation\NewsCommentRepository.cs" />
-    <Compile Include="Repository\Implementation\NewsRepository.cs" />
     <Compile Include="Repository\Implementation\RoleRepository.cs" />
-    <Compile Include="Repository\Implementation\ShareNewsRepository.cs" />
     <Compile Include="Repository\Implementation\StatusRepository.cs" />
     <Compile Include="Repository\Implementation\UserLoginHistoryRepository.cs" />
     <Compile Include="Repository\Implementation\UserProfileRepository.cs" />

@@ -25,7 +25,6 @@ namespace Elearn.API.DependencyResolution
             //Services
             For<IAdminServices>().Use<AdminServices>();
             For<IUserProfileServices>().Use<UserProfileServices>();
-            For<IEmployeeServices>().Use<EmployeeServices>();
             For<IAttachmentServices>().Use<AttachmentServices>();
 
             //Repository
@@ -33,16 +32,11 @@ namespace Elearn.API.DependencyResolution
             For<IAttachmentRepository>().Use<AttachmentRepository>();
             For<ICountryRepository>().Use<CountryRepository>();
             For<ICoverImagesRepository>().Use<CoverImagesRepository>();
-            For<ILikeRepository>().Use<LikeRepository>();
-            For<INewsCommentRepository>().Use<NewsCommentRepository>();
-            For<INewsRepository>().Use<NewsRepository>();
             For<IRoleRepository>().Use<RoleRepository>();
-            For<IShareNewsRepository>().Use<ShareNewsRepository>();
             For<IStatusRepository>().Use<StatusRepository>();
             For<IUserLoginHistoryRepository>().Use<UserLoginHistoryRepository>();
             For<IUserProfileRepository>().Use<UserProfileRepository>();
             For<IUserRoleRepository>().Use<UserRoleRepository>();
-            For<IEmployeeRepository>().Use<EmployeeRepository>();
         }
 
        
