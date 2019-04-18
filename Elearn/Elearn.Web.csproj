@@ -311,20 +311,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Guideline\Apologize - Timbaland_ OneRepublic [MP3 320kbps].mp3" />
-    <Content Include="Guideline\Attention - Charlie Puth [320kbps_MP3].mp3" />
-    <Content Include="Guideline\Despacito - Luis Fonsi_ Daddy Yankee [MP3 320kbps].mp3" />
-    <Content Include="Guideline\Hello - Lionel Richie_ Jennifer Nettles [MP3 320kbps].mp3" />
-    <Content Include="Guideline\Imagine - Susan Wong [MP3 320kbps].mp3" />
-    <Content Include="Guideline\Lemon Tree - Fools Garden [MP3 320kbps].mp3" />
-    <Content Include="Guideline\Let Her Go - Passenger [MP3 320kbps].mp3" />
-    <Content Include="Guideline\One Call Away - Charlie Puth [MP3 320kbps].mp3" />
-    <Content Include="Guideline\Panama - Matteo [320kbps_MP3].mp3" />
-    <Content Include="Guideline\Remember When - Alan Jackson [MP3 320kbps].mp3" />
-    <Content Include="Guideline\Shape of You - Ed Sheeran [320kbps_MP3].mp3" />
-    <Content Include="Guideline\Something Just Like This - The Chainsmok [320kbps_MP3].mp3" />
-    <Content Include="Guideline\We Don_t Talk Anymore Live_ - Charlie Pu [MP3 320kbps].mp3" />
-    <Content Include="Guideline\Yesterday - John Lennon [MP3 320kbps].mp3" />
     <Content Include="Resource\Content\bootstrap.css" />
     <Content Include="Resource\Content\bootstrap.min.css" />
     <Content Include="Resource\Content\Site.css" />
